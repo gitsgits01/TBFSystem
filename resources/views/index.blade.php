@@ -20,7 +20,13 @@
         <nav>
             <div class="navbar">
                 <div id="travel">
-                    TRAVEL TOGETHER <i class="fa-solid fa-people-group"></i>
+                    TRAVEL <i class="fa-solid fa-people-group"></i> TOGETHER 
+                </div>
+                <div class="me">
+                    <input tye="checkbox" id="check">
+                    <label for ="check" class="checkbtn" >
+                        <i class="fas fa-bars"></i>
+                    </label>
                 </div>
                 <div class="section_nav">
                 <ul>
@@ -36,12 +42,7 @@
     <main>
     <div class="container">
         <div class="text-container">
-            <h3>Let's Begin the Colorful Journey.</h3>
-            <h4>Travel Together and make memories... </h4>
-            <p></p>
-          <h2><a href="">Discover More</a></h2>  
-
-
+            <p>Discover  Connect  Explore</p>
         </div>
         <div class="swiper-container">
             <div class="swiper-wrapper">
@@ -73,9 +74,18 @@
     </div>
     </main>
     <footer>
-
+        <div class="footer_section">
+                <div>
+                    <ul class="social_media">
+                     <li><a href="#"><i class="fa-brands fa-facebook"></i></a></li>
+                     <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+                    </ul>
+                </div>
+        </div>
+        <div class="text_footer">
+            <p>2023 TRAVEL TOGETHER<br/>&hearts; Gitima & Anita </P>
+        </div>
     </footer>
-
     <script src="{{asset('js/index.js')}}"></Script>
     <script src="{{asset('js/aboutus.js')}}"></script>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
