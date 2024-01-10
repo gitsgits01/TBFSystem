@@ -1,0 +1,129 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+.navbar{
+    background-color: #1d3557;
+    height:70px;
+    width:100%;
+    color: whitesmoke;
+    /*display: inline;*/
+    position: fixed;
+}
+#travel{
+    font-family: 'Courier New', Courier, monospace;
+    margin-left:10px;
+    float:left;
+    font-weight: bold;
+    font-size:35px;
+}
+.section_nav{
+    display:flex;
+    height:50px;
+    width:530px;
+    margin-top: 10px;
+}
+.navbar ul{
+    float:right;
+}
+.navbar ul li{
+    display: inline-block;
+    align-items: center;
+    margin: 0 15px;
+}
+.navbar ul li a{
+    color: whitesmoke;
+    font-size: 25px;
+    border-radius: 3px;
+    border: 1px solid transparent;
+}
+.navbar a:hover{
+   box-shadow: 0 0 5px rgba(255,255,255,0.5);
+    text-decoration: none;
+    color:whitesmoke;
+    border: 1px solid white;
+}
+#home:hover{
+    color:rgb(191, 134, 13);
+}
+/*.slider-container {
+    width: 100%;
+    margin: 4px;
+    overflow: hidden;
+}
+
+.slider {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.slider li {
+    width: 100%;
+}*/
+/* Add these styles to your CSS file or within a <style> tag in your HTML file */
+
+.container{
+    position: relative;
+    width: 100%;
+}
+.text-container{
+
+    position: fixed;
+    top:50%;
+    left:translate(-50%,-50%);
+    text-align:center;
+    z-index:2; /*place the text container above the slide*/
+    color:whitesmoke;
+}
+.text-container h2 a{
+    color: inherit;
+    text-decoration: none;
+}
+/* Optional: Style the container for the entire slider */
+.swiper-container {
+     /* Adjust the width as needed */
+    margin: auto;
+    overflow: hidden;   /*hide the overflow horizzontal slider from bottom*/
+}
+
+/* Style each individual slide */
+.swiper-slide img {
+    margin-top:3px;
+    width: 100%; /* Ensure images take the full width of the slide */
+    height:50% ; /* Maintain aspect ratio */
+}
+
+/* Optional: Style the pagination bullets */
+.swiper-pagination {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Optional: Style the navigation buttons */
+.swiper-button-next,
+.swiper-button-prev {
+    font-size: 24px;
+    color: #fff;
+}
+
+/* Optional: Style the navigation button positions */
+.swiper-button-next {
+    right: 10px;
+}
+
+.swiper-button-prev {
+    left: 10px;
+}
+
+/* Optional: Customize pagination bullet styles on hover (example) */
+.swiper-pagination-bullet:hover {
+    background-color: #ff6600;
+}
+
