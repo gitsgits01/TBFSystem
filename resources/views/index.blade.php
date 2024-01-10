@@ -20,14 +20,20 @@
         <nav>
             <div class="navbar">
                 <div id="travel">
-                    TRAVEL TOGETHER <i class="fa-solid fa-people-group"></i>
+                    TRAVEL <i class="fa-solid fa-people-group"></i> TOGETHER 
+                </div>
+                <div class="me">
+                    <input tye="checkbox" id="check">
+                    <label for ="check" class="checkbtn" >
+                        <i class="fas fa-bars"></i>
+                    </label>
                 </div>
                 <div class="section_nav">
-                <ul>
-                    <li><a href="">About Us</a></li>
-                    <li><a href="">Login</a></li>
-                    <li><a href="">SignUp</a></li>
-                  <li><a href="" id="home"><i class="fa-solid fa-house"></i> Home</a></li>
+                <ul class="menu">
+                    <li><a href="" class="active">About Us</a></li>
+                    <li><a href="" class="active" >Login</a></li>
+                    <li><a href="" class="active" >SignUp</a></li>
+                    <li><a href="" class="active" id="home"><i class="fa-solid fa-house"></i> Home</a></li>
                 </ul>
                 </div>
             </div>
@@ -36,12 +42,7 @@
     <main>
     <div class="container">
         <div class="text-container">
-            <h3>Let's Begin the Colorful Journey.</h3>
-            <h4>Travel Together and make memories... </h4>
-            <p></p>
-          <h2><a href="">Discover More</a></h2>  
-
-
+            <p>Discover  Connect  Explore</p>
         </div>
         <div class="swiper-container">
             <div class="swiper-wrapper">
@@ -57,23 +58,20 @@
             <div class="swiper-button-prev"></div>
         </div>
     </div>
-
-    <!--<div class="slider-container">
-        <ul class="slider">
-            <li><img src="{{asset('photos/background.jpg')}}" alt="Mystic Mountain Range"/></li>
-            <li><img src="{{asset('photos/man2.jpg')}}" alt="Mesmerizing Manang"/></li>
-            <li><img src="{{asset('photos/kha2.jpg')}}" alt="Greenish Khaptad"/></li>
-        </ul>
-        <button class="prev">Previous</button>
-        <button class="next">Next</button>
-    </div>-->
-
-
     </main>
     <footer>
-
+        <div class="footer_section">
+                <div>
+                    <ul class="social_media">
+                     <li><a href="#"><i class="fa-brands fa-facebook"></i></a></li>
+                     <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+                    </ul>
+                </div>
+        </div>
+        <div class="text_footer">
+            <p>2023 TRAVEL TOGETHER<br/>&hearts; Gitima & Anita </P>
+        </div>
     </footer>
-
     <script src="{{asset('js/index.js')}}"></Script>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 </body>

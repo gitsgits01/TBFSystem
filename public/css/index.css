@@ -4,13 +4,12 @@
     box-sizing: border-box;
     text-decoration: none;
 }
-.navbar{
+nav{
     background-color: #1d3557;
     height:70px;
     width:100%;
     color: whitesmoke;
-    /*display: inline;*/
-    position: fixed;
+    position: relative;
 }
 #travel{
     font-family: 'Courier New', Courier, monospace;
@@ -27,6 +26,8 @@
 }
 .navbar ul{
     float:right;
+    width: 100%;
+    display: flex;
 }
 .navbar ul li{
     display: inline-block;
@@ -39,54 +40,86 @@
     border-radius: 3px;
     border: 1px solid transparent;
 }
-.navbar a:hover{
+a:active a:hover{
    box-shadow: 0 0 5px rgba(255,255,255,0.5);
-    text-decoration: none;
+   text-decoration: none;
     color:whitesmoke;
-    border: 1px solid white;
+    border: 2px solid white;
+    transition: .5s;
 }
 #home:hover{
     color:rgb(191, 134, 13);
 }
-/*.slider-container {
-    width: 100%;
-    margin: 4px;
-    overflow: hidden;
+.checkbtn{
+    font-size: 30px;
+    color: white;
+    float: right;
+    line-height: 70px;
+    margin-right: 20px;
+    cursor: pointer;
+    display: none;
 }
-
-.slider {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    transition: transform 0.5s ease-in-out;
+#check{
+    display: none;
 }
+@media(max-width: 768px){
+    .checkbtn{
+        display: block;
+    }
+    .menu{
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        position: fixed;
+        width: 100%;
+        height: 80vh;
+        background: rgb(69,123,157);
+        top:70px;
+        right: -30%;
+        z-index:100;
+        text-align: center;
+        transition: all 0.5s;
+    }
+    .menu li{
+        margin-top: 50px;
+        align-content: normal;
+    }
+    .menu li a{
+        margin: 10px;
+        padding: 10px;
+        font-size: 30px;
+    }
+    .open-menu, .close-menu a.active a.hover{
+        display: block;
+    }
+    #check:checked ~ ul{
+        right:0;
+    }
 
-.slider li {
-    width: 100%;
-}*/
-/* Add these styles to your CSS file or within a <style> tag in your HTML file */
-
+}
 .container{
     position: relative;
     width: 100%;
+    height: auto;
+    color:#0082e6;
+
 }
 .text-container{
-
-    position: fixed;
-    top:50%;
-    left:translate(-50%,-50%);
+    position:absolute;
+    top:35%;
+    left: 18%;
+    padding: 0;
     text-align:center;
     z-index:2; /*place the text container above the slide*/
     color:whitesmoke;
+    font-size: 70px;
+    font-family: 'Gill Sans', 'Gill Sans MT', 'Trebuchet MS', sans-serif;
+    align-content:space-around;
 }
-.text-container h2 a{
-    color: inherit;
-    text-decoration: none;
-}
+ 
 /* Optional: Style the container for the entire slider */
 .swiper-container {
-     /* Adjust the width as needed */
+    max-width: 100%;/* Adjust the width as needed */
     margin: auto;
     overflow: hidden;   /*hide the overflow horizzontal slider from bottom*/
 }
@@ -117,13 +150,36 @@
 .swiper-button-next {
     right: 10px;
 }
-
 .swiper-button-prev {
     left: 10px;
 }
 
-/* Optional: Customize pagination bullet styles on hover (example) */
-.swiper-pagination-bullet:hover {
-    background-color: #ff6600;
+footer{
+    background-color:#1d3557;
+    width: 100%;
+    height:200px;
+    color: whitesmoke;
+    position: relative;
 }
-
+.footer_section{
+    display: flex;
+    position:absolute;
+    height:200px;
+    width: 40%;   
+    padding-top: 80px;
+}
+.social_media li{
+    font-size: 2em;
+    display: inline-block;
+    align-items: center;
+    margin:0 85px;
+}
+.social_media li a{
+    color: whitesmoke;
+}
+.text_footer{
+    margin-top: 80px;
+    margin-right:85px ;
+    text-align: right;
+    float: right;
+}
