@@ -93,7 +93,7 @@
 
 /* Style each individual slide */
 .swiper-slide img {
-    margin-top:3px;
+    margin-top:2px;
     width: 100%; /* Ensure images take the full width of the slide */
     height:50% ; /* Maintain aspect ratio */
 }

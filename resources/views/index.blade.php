@@ -24,9 +24,9 @@
                 </div>
                 <div class="section_nav">
                 <ul>
-                    <li><a href="">About Us</a></li>
-                    <li><a href="">Login</a></li>
-                    <li><a href="">SignUp</a></li>
+                    <li><a href="#aboutcontent">About Us</a></li>
+                    <li><a href="{{route('login')}}">Login</a></li>
+                    <li><a href="{{route('signup')}}">SignUp</a></li>
                   <li><a href="" id="home"><i class="fa-solid fa-house"></i> Home</a></li>
                 </ul>
                 </div>
@@ -68,13 +68,16 @@
         <button class="next">Next</button>
     </div>-->
 
-
+    <div id="aboutcontent">
+        @include('aboutus')
+    </div>
     </main>
     <footer>
 
     </footer>
 
     <script src="{{asset('js/index.js')}}"></Script>
+    <script src="{{asset('js/aboutus.js')}}"></script>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 </body>
 </html>
