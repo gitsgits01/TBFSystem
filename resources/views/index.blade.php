@@ -23,7 +23,7 @@
                     TRAVEL <i class="fa-solid fa-people-group"></i> TOGETHER 
                 </div>
                 <div class="me">
-                    <input tye="checkbox" id="check">
+                    <input tye="checkbox" id="check"> <!-- this is the button-->
                     <label for ="check" class="checkbtn" >
                         <i class="fas fa-bars"></i>
                     </label>

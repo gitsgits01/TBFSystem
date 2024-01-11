@@ -19,7 +19,7 @@ nav{
     font-size:35px;
 }
 .section_nav{
-    display:flex;
+    display:flex; /* this is the css*/
     height:50px;
     width:530px;
     margin-top: 10px;
