@@ -16,11 +16,53 @@
         @csrf
         <h3>SignUp</h3>
         <input class="elements" type="text" name="name" placeholder="Name" required>
+           <span class="input_error">
+                @error('name')
+                 {{$message}}
+                @enderror
+            </span>
         <input class="elements" type="email" name="email" placeholder="Email" required>
+           <span class="input_error">
+              @error('email')
+               {{$message}}
+              @enderror
+            </span>    
         <input class="elements" type="text" name="address" placeholder="address" required>
+           <span class="input_error">
+              @error('email')
+               {{$message}}
+              @enderror
+            </span>
         <input class="elements" type="date" name="dob" placeholder="Date of Birth" required>
+            <span class="input_error">
+              @error('email')
+               {{$message}}
+              @enderror
+            </span>
+            <div class="radio-box">
+                <label>
+                  <input type="radio" name="gender" value="male"> Male
+                </label>
+                <label>
+                  <input type="radio" name="gender" value="female"> Female
+                </label>
+                <label>
+                  <input type="radio" name="gender" value="others"> Others
+                </label>
+              </div><br/>
         <input class="elements" type="password" name="password" placeholder="Password" required>
+            <span class="input_error">
+                @error('password')
+                {{$message}}
+                @enderror
+            </span>
+
         <input class="elements" type="password" name="confirm_password" placeholder="Confirm Password" required>
+            <span class="input_error">
+               @error('email')
+               {{$message}}
+               @enderror
+          </span>
         <button class="elements" type="submit">Cancel</button>
         <button class="elements" type="submit">SignUp</button>
 
