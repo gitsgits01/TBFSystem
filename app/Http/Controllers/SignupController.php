@@ -14,8 +14,7 @@ class SignupController extends Controller
    
     public function signup(Request $request)
 {
-    $validatedData = $request->validate(
-        [
+    $validatedData = $request->validate([
         'fname' => 'required',
         'lname' => 'required',
         'email' => 'required|email|unique:users,email',
@@ -23,8 +22,7 @@ class SignupController extends Controller
         'address' => 'required|string|max:255',
         'password' => 'required|min:6',
         'confirm_password' => 'required|same:password',
-        ]
-);
+]);
     $validator = Validator::make($request->all(), $validatedData);
     //return view('signup');
     return redirect()->back()->withErrors($validator)->withInput();

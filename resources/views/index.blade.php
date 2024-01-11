@@ -19,16 +19,14 @@
     <header>
         <nav>
             <div class="navbar">
-                <div id="travel">
+                <div class="logo">
                     TRAVEL <i class="fa-solid fa-people-group"></i> TOGETHER 
                 </div>
-                <div class="me">
-                    <input tye="checkbox" id="check">
-                    <label for ="check" class="checkbtn" >
-                        <i class="fas fa-bars"></i>
-                    </label>
+                <div class="icon">
+                </div id="menu-btn" class="fas fa-bars">
                 </div>
                 <div class="section_nav">
+                    <div id="nav-close" class="fas fa-times"></div>
                 <ul>
                     <li><a href="#aboutcontent">About Us</a></li>
                     <li><a href="{{route('login')}}">Login</a></li>
@@ -46,13 +44,13 @@
         </div>
         <div class="swiper-container">
             <div class="swiper-wrapper">
-                <div class="swiper-slide"><img src="{{ asset('photos/man2.jpg') }}" alt="Image 1"></div>
-                <div class="swiper-slide"><img src="{{ asset('photos/kha2.jpg') }}" alt="Image 2"></div>
-                <div class="swiper-slide"><img src="{{asset('photos/backgroundpkr.jpg')}}" alt="Fewa Lake"></div>
+                <div class="swiper-slide image active"><img src="{{ asset('photos/man2.jpg') }}" alt="Image 1"></div>
+                <div class="swiper-slide image"><img src="{{ asset('photos/kha2.jpg') }}" alt="Image 2"></div>
+                <div class="swiper-slide image"><img src="{{asset('photos/backgroundpkr.jpg')}}" alt="Fewa Lake"></div>
                 <!-- Add more slides as needed -->
             </div>
             <!-- Add Pagination -->
-            <div class="swiper-pagination"></div>
+            {{-- <div class="swiper-pagination"></div> --}}
             <!-- Add Navigation -->
             <div class="swiper-button-next"></div>
             <div class="swiper-button-prev"></div>

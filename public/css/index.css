@@ -3,20 +3,41 @@
     padding: 0px;
     box-sizing: border-box;
     text-decoration: none;
+
+    transition:0.2s linear;
 }
+/* header section */
+
+
+
 nav{
     background-color: #1d3557;
     height:70px;
     width:100%;
     color: whitesmoke;
     position: relative;
+    align-content: center;
 }
-#travel{
+.nav_bar{ 
+    position:fixed; /*CHANGE*/
+    top:0;
+    left:0;
+    right:0;
+    padding: 2rem 9%;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+}
+.nav_bar.active{ /*c*/
+background: #1d3557;
+box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+}
+div .logo{
     font-family: 'Courier New', Courier, monospace;
-    margin-left:10px;
     float:left;
     font-weight: bold;
     font-size:35px;
+    /* line-height:80px; */
 }
 .section_nav{
     display:flex;
@@ -24,79 +45,109 @@ nav{
     width:530px;
     margin-top: 10px;
 }
+.navbar #nav-close{
+    font-size: 5rem;
+    cursor: pointer;
+    color: black;
+    display: none;
+}
+
 .navbar ul{
     float:right;
     width: 100%;
+    margin-right:10px;
     display: flex;
 }
 .navbar ul li{
     display: inline-block;
     align-items: center;
-    margin: 0 15px;
+    padding-left: 5px;
+    /* margin: 0 15px; */
 }
 .navbar ul li a{
     color: whitesmoke;
     font-size: 25px;
+    padding:5px 10px;
     border-radius: 3px;
-    border: 1px solid transparent;
 }
-a:active a:hover{
+/* .navbar ul li a:hover{
+    border: 1px solid transparent;
+
+} */
+ .navbar ul li a:hover{
    box-shadow: 0 0 5px rgba(255,255,255,0.5);
+
    text-decoration: none;
     color:whitesmoke;
     border: 2px solid white;
     transition: .5s;
 }
+/* a.active, a.hover{
+    background:red;
+    transition:.5s;
+} */
 #home:hover{
     color:rgb(191, 134, 13);
 }
-.checkbtn{
-    font-size: 30px;
-    color: white;
-    float: right;
-    line-height: 70px;
-    margin-right: 20px;
-    cursor: pointer;
+
+#menu-btn{
     display: none;
 }
-#check{
-    display: none;
+/* @media(max-width: 768px){
+    label.logo{
+        font-size:30px;
+        padding-left:5px;
+    }
+    nav ul li a{
+        font-size:14px;
+
+    }
 }
-@media(max-width: 768px){
-    .checkbtn{
+@media (max-width:850px){
+    .menu-btn{
         display: block;
     }
-    .menu{
-        display: none;
-        flex-direction: column;
-        align-items: center;
-        position: fixed;
+    .section_nav{
+        position:fixed;
         width: 100%;
         height: 80vh;
         background: rgb(69,123,157);
-        top:70px;
-        right: -30%;
-        z-index:100;
-        text-align: center;
+        top:0px;
+        left:-100%;
+         z-index:10000; 
+         display: flex;
+         flex-flow: column;
+         align-items: center;
+        justify-content: center;
         transition: all 0.5s;
-    }
-    .menu li{
-        margin-top: 50px;
-        align-content: normal;
-    }
-    .menu li a{
-        margin: 10px;
-        padding: 10px;
-        font-size: 30px;
-    }
-    .open-menu, .close-menu a.active a.hover{
-        display: block;
-    }
-    #check:checked ~ ul{
-        right:0;
-    }
 
+    }
+    .section_nav.active{
+        left:0;
+        box-shadow: 0 0 0 100rw rgba(0, 0, 0, 0.8);
+    }
+    nav ul li{
+        display:block;
+        margin:50px 0;
+        line-height:30px;
+    }
+    .section_nav a{
+        margin: 1rem 0;
+        font-size:20px;
+    
+    }
+    .section_nav #nav-close{
+        display: block;
+        position: absolute;
+        top: 1rem;
+        right: 2rem;
+    }
 }
+     */
+
+
+
+/* main section */
 .container{
     position: relative;
     width: 100%;
@@ -107,7 +158,7 @@ a:active a:hover{
 .text-container{
     position:absolute;
     top:35%;
-    left: 18%;
+    left: 18%; 
     padding: 0;
     text-align:center;
     z-index:2; /*place the text container above the slide*/
@@ -120,7 +171,7 @@ a:active a:hover{
 /* Optional: Style the container for the entire slider */
 .swiper-container {
     max-width: 100%;/* Adjust the width as needed */
-    margin: auto;
+
     overflow: hidden;   /*hide the overflow horizzontal slider from bottom*/
 }
 
@@ -128,7 +179,7 @@ a:active a:hover{
 .swiper-slide img {
     margin-top:2px;
     width: 100%; /* Ensure images take the full width of the slide */
-    height:50% ; /* Maintain aspect ratio */
+    height:100% ; /* Maintain aspect ratio */
 }
 
 /* Optional: Style the pagination bullets */
