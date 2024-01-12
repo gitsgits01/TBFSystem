@@ -9,6 +9,13 @@ class LoginController extends Controller
     public function form(){
         return view('login');
     }
+    public function logout(){
+        session()->flush();
+        auth()->logout();
+        return redirect('login');
+    }
+
+    
     public function login(Request $request)
 {
     // Validate the login request
@@ -24,7 +31,7 @@ class LoginController extends Controller
     }
 
     // Authentication failed, redirect back with error message
-    return redirect()->back()->withInput()->withErrors(['email' => 'Invalid credentials']);
+    return redirect()->back()->withInput()->withErrors(['email','password' => 'Invalid credentials']);
 }
 
     // public function aboutus(){

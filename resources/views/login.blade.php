@@ -13,6 +13,16 @@
   </head>
   <body class="body">
       <div class="login-container">
+
+        <!--Sessions-->
+        @if(Session::has('error'))
+          <p class="text-danger">{{Session::get('error')}}</p>
+        @endif
+        @if(Session::has('success'))
+          <p class="text-sucess">{{Session::get('sucess')}}</p>
+        @endif
+
+
           <form method="POST" action="{{ route('login') }}" class="login-form">
               @csrf
               <h2>Login</h2>
@@ -20,7 +30,8 @@
               <input type="password" name="password" placeholder="Password" required>
               <button type="submit">Login</button>
               <p>OR</p>
-              <button type="submit"><a href="{{route('signup')}}">SignUp</a></button>
+              <button type="submit">SignUp</button>
+              {{-- <a href="{{route('signup')}}"> --}}
 
           </form>
       </div>

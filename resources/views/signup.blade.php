@@ -12,8 +12,17 @@
   </head>
   <body class="body">
     <div class="signup-container">
-  <form action="{{url('/')}}/signup" method="post" class="signup-form"> 
+
+         <!--sessions-->
+         @if(Session::has('error'))
+         <p class="text-danger">{{Session::get('error')}}</p>
+       @endif
+
+
+    <form action="{{ route('signup.store') }}" method="post" class="signup-form"> 
+
         @csrf
+        @method('post')
         <h3>SignUp</h3>
         <input class="elements" type="text" name="name" placeholder="Name" required>
            <span class="input_error">
@@ -63,9 +72,8 @@
                {{$message}}
                @enderror
           </span>
-        <button class="elements" type="submit"><a href="">Cancel</a></button>
+        <button class="elements" type="submit"><a href="{{route('cancel')}}">Cancel</a></button>
         <button class="elements" type="submit"><a href="{{route('login')}}">SignUp</a></button>
-
             
             <!-- <div class="label_group">
                 <label for="">First Name</label><br/>
