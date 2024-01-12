@@ -19,6 +19,9 @@
               <input type="email" name="email" placeholder="Email"required >
               <input type="password" name="password" placeholder="Password" required>
               <button type="submit">Login</button>
+              <p>OR</p>
+              <button type="submit"><a href="{{route('signup')}}">SignUp</a></button>
+
           </form>
       </div>
 

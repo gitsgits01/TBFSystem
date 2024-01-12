@@ -11,6 +11,9 @@ class SignupController extends Controller
     public function form(){
         return view('signup');
     }
+    public function home(){
+        return view('index');
+    }
    
     public function signup(Request $request)
 {

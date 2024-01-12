@@ -18,7 +18,15 @@ use App\Http\Controllers\LoginController;
 Route::get('/', function () {
     return view('index');
 });
+// Route::get('/home', function () {
+//     return view('index');
+// })->name('home');
+// Route::get('/home',[SignupController::class,'home'])->name('home');
+
 Route::get('/sigup',[SignupController::class,'form'])->name('signup');
 Route::post('/signup',[SignupController::class,'signup'])->name('signup.store');
 Route::get('/login',[LoginController::class,'form'])->name('login');
+
+
+
 

@@ -19,14 +19,16 @@
     <header>
         <nav>
             <div class="navbar">
-                <div class="logo">
+                <div id="travel">
                     TRAVEL <i class="fa-solid fa-people-group"></i> TOGETHER 
                 </div>
-                <div class="icon">
-                </div id="menu-btn" class="fas fa-bars">
+                <div class="me">
+                    <input tye="checkbox" id="check"> <!-- this is the button-->
+                    <label for ="check" class="checkbtn" >
+                        <i class="fas fa-bars"></i>
+                    </label>
                 </div>
                 <div class="section_nav">
-                    <div id="nav-close" class="fas fa-times"></div>
                 <ul>
                     <li><a href="#aboutcontent">About Us</a></li>
                     <li><a href="{{route('login')}}">Login</a></li>
@@ -40,7 +42,7 @@
     <main>
     <div class="container">
         <div class="text-container">
-            <p>Discover  Connect  Explore</p>
+            <p>Discover  Connect <a class="rounded-pill" href="{{route('login')}}">Explore</a></p>
         </div>
         <div class="swiper-container">
             <div class="swiper-wrapper">
@@ -50,7 +52,7 @@
                 <!-- Add more slides as needed -->
             </div>
             <!-- Add Pagination -->
-            {{-- <div class="swiper-pagination"></div> --}}
+            <div class="swiper-pagination"></div>
             <!-- Add Navigation -->
             <div class="swiper-button-next"></div>
             <div class="swiper-button-prev"></div>

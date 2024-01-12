@@ -3,148 +3,101 @@
     padding: 0px;
     box-sizing: border-box;
     text-decoration: none;
-
-    transition:0.2s linear;
 }
-/* header section */
-
-
-
 nav{
     background-color: #1d3557;
     height:70px;
     width:100%;
     color: whitesmoke;
     position: relative;
-    align-content: center;
 }
-.nav_bar{ 
-    position:fixed; /*CHANGE*/
-    top:0;
-    left:0;
-    right:0;
-    padding: 2rem 9%;
-    z-index: 1000;
-    display: flex;
-    align-items: center;
-}
-.nav_bar.active{ /*c*/
-background: #1d3557;
-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
-}
-div .logo{
+#travel{
     font-family: 'Courier New', Courier, monospace;
+    margin-left:10px;
     float:left;
     font-weight: bold;
     font-size:35px;
-    /* line-height:80px; */
 }
 .section_nav{
-    display:flex;
+    display:flex; /* this is the css*/
     height:50px;
     width:530px;
     margin-top: 10px;
 }
-.navbar #nav-close{
-    font-size: 5rem;
-    cursor: pointer;
-    color: black;
-    display: none;
-}
-
 .navbar ul{
     float:right;
     width: 100%;
-    margin-right:10px;
     display: flex;
 }
 .navbar ul li{
     display: inline-block;
     align-items: center;
-    padding-left: 5px;
-    /* margin: 0 15px; */
+    margin: 0 15px;
 }
 .navbar ul li a{
     color: whitesmoke;
     font-size: 25px;
-    padding:5px 10px;
     border-radius: 3px;
-}
-/* .navbar ul li a:hover{
     border: 1px solid transparent;
 }
 .navbar ul li a:hover{
    box-shadow: 0 0 5px rgba(255,255,255,0.5);
-
    text-decoration: none;
     color:whitesmoke;
     border: 2px solid white;
     transition: .5s;
 }
-/* a.active, a.hover{
-    background:red;
-    transition:.5s;
-} */
 #home:hover{
     color:rgb(191, 134, 13);
 }
-
-#menu-btn{
+.checkbtn{
+    font-size: 30px;
+    color: white;
+    float: right;
+    line-height: 70px;
+    margin-right: 20px;
+    cursor: pointer;
     display: none;
 }
-/* @media(max-width: 768px){
-    label.logo{
-        font-size:30px;
-        padding-left:5px;
-    }
-    nav ul li a{
-        font-size:14px;
-
-    }
+#check{
+    display: none;
 }
-@media (max-width:850px){
-    .menu-btn{
+@media(max-width: 768px){
+    .checkbtn{
         display: block;
     }
-    .section_nav{
-        position:fixed;
+    .me{
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        position: fixed;
         width: 100%;
         height: 80vh;
         background: rgb(69,123,157);
-        top:0px;
-        left:-100%;
-         z-index:10000; 
-         display: flex;
-         flex-flow: column;
-         align-items: center;
-        justify-content: center;
+        top:70px;
+        right: -30%;
+        z-index:100;
+        text-align: center;
         transition: all 0.5s;
-
     }
-    .section_nav.active{
-        left:0;
-        box-shadow: 0 0 0 100rw rgba(0, 0, 0, 0.8);
+    .me li{
+        margin-top: 50px;
+        align-content: normal;
     }
-    nav ul li{
-        display:block;
-        margin:50px 0;
-        line-height:30px;
+    .me li a{
+        margin: 10px;
+        padding: 10px;
+        font-size: 30px;
     }
-    .section_nav a{
-        margin: 1rem 0;
-        font-size:20px;
-    
-    }
-    .section_nav #nav-close{
+    /* .open-menu, .close-menu a.active a.hover{
         display: block;
-        position: absolute;
-        top: 1rem;
-        right: 2rem;
+    } */
+    #check:checked ~ ul{
+        right:0;
     }
+    
+
 }
-     */
-
-
 
 /* main section */
 .container{
@@ -157,7 +110,9 @@ div .logo{
 .text-container{
     position:absolute;
     top:35%;
+    /* bottom:35%; */
     left: 18%; 
+    right:18%;
     padding: 0;
     text-align:center;
     z-index:2; /*place the text container above the slide*/
@@ -165,6 +120,22 @@ div .logo{
     font-size: 70px;
     font-family: 'Gill Sans', 'Gill Sans MT', 'Trebuchet MS', sans-serif;
     align-content:space-around;
+}
+.text-container a{
+    color: whitesmoke;
+    text-decoration: none;
+    padding:5px;
+    /* background-color:hotpink; */
+}
+/* .rounded-pill{
+    border:3px solid whitesmoke;
+
+} */
+.text-container a:hover{
+    color: whitesmoke;
+    text-decoration: none;
+    border:5px solid whitesmoke;
+   font-size: 75px;
 }
  
 /* Optional: Style the container for the entire slider */
@@ -204,6 +175,7 @@ div .logo{
     left: 10px;
 }
 
+
 footer{
     background-color:#1d3557;
     width: 100%;
@@ -232,4 +204,19 @@ footer{
     margin-right:85px ;
     text-align: right;
     float: right;
+}
+
+@media only screen and(max-width:760px){
+    .container{
+        position :absolute;
+    }
+     .text-container{
+        font-size: 14px;
+        position:inherit;
+        top:auto;
+        left: auto; 
+        padding: 0;
+        text-align:center;
+        z-index:100; 
+     }
 }
