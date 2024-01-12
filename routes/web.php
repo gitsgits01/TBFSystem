@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SignupController;
 use App\Http\Controllers\LoginController;
+use App\Models\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +24,13 @@ Route::post('/signup',[SignupController::class,'signup'])->name('signup.store');
 Route::get('/login',[LoginController::class,'form'])->name('login');
 //Route::get('/about',[LoginController::class,'aboutus'])->name('aboutus');
 
-// Route::get('/aboutus',function(){
-//     return view('aboutus');
-// });
+Route::post('/signup',function(){
+     $user= new User();
+     $user->name = request('name');
+     $user->email = request('email');
+     $user->address = request('address');
+     $user->dob = request('dob');
+     $user->gender = request('gender');
+     $user->password = request('password');
+     $user->save();
+ });

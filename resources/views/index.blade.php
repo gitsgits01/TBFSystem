@@ -51,24 +51,11 @@
                 <div class="swiper-slide"><img src="{{asset('photos/backgroundpkr.jpg')}}" alt="Fewa Lake"></div>
                 <!-- Add more slides as needed -->
             </div>
-            <!-- Add Pagination -->
-            <div class="swiper-pagination"></div>
             <!-- Add Navigation -->
             <div class="swiper-button-next"></div>
             <div class="swiper-button-prev"></div>
         </div>
     </div>
-
-    <!--<div class="slider-container">
-        <ul class="slider">
-            <li><img src="{{asset('photos/background.jpg')}}" alt="Mystic Mountain Range"/></li>
-            <li><img src="{{asset('photos/man2.jpg')}}" alt="Mesmerizing Manang"/></li>
-            <li><img src="{{asset('photos/kha2.jpg')}}" alt="Greenish Khaptad"/></li>
-        </ul>
-        <button class="prev">Previous</button>
-        <button class="next">Next</button>
-    </div>-->
-
     <div id="aboutcontent">
         @include('aboutus')
     </div>

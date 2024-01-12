@@ -11,9 +11,4 @@ var swiper = new Swiper('.swiper-container', {
         clickable: true,
     },
 });
- const burgerMenu = document.querySelector('.checkbtn');
- const menu = document.querySelector('section_nav');
- burgerMenu.addEventListener('click',function(){
-    menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
- })
 });
