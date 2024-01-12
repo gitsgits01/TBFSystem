@@ -42,13 +42,13 @@
     <main>
     <div class="container">
         <div class="text-container">
-            <p>Discover  Connect  Explore</p>
+            <p>Discover  Connect <a class="rounded-pill" href="{{route('login')}}">Explore</a></p>
         </div>
         <div class="swiper-container">
             <div class="swiper-wrapper">
-                <div class="swiper-slide"><img src="{{ asset('photos/man2.jpg') }}" alt="Image 1"></div>
-                <div class="swiper-slide"><img src="{{ asset('photos/kha2.jpg') }}" alt="Image 2"></div>
-                <div class="swiper-slide"><img src="{{asset('photos/backgroundpkr.jpg')}}" alt="Fewa Lake"></div>
+                <div class="swiper-slide image active"><img src="{{ asset('photos/man2.jpg') }}" alt="Image 1"></div>
+                <div class="swiper-slide image"><img src="{{ asset('photos/kha2.jpg') }}" alt="Image 2"></div>
+                <div class="swiper-slide image"><img src="{{asset('photos/backgroundpkr.jpg')}}" alt="Fewa Lake"></div>
                 <!-- Add more slides as needed -->
             </div>
             <!-- Add Navigation -->
