@@ -18,11 +18,7 @@ use App\Models\User;
 
 Route::get('/', function () {
     return view('index');
-});
-// Route::get('/home', function () {
-//     return view('index');
-// })->name('home');
-// Route::get('/home',[SignupController::class,'home'])->name('home');
+})->name('Cancel');
 
 Route::get('/sigup',[SignupController::class,'form'])->name('signup');
 Route::post('/signup',[SignupController::class,'signup'])->name('signup.store');

@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
+use App\Models\User;
+use Error;
 
 
 class SignupController extends Controller
@@ -11,18 +14,19 @@ class SignupController extends Controller
     public function form(){
         return view('signup');
     }
-    public function home(){
-        return view('index');
-    }
+    // public function home(){
+    //     return view('index');
+    // }
    
-    public function signup(Request $request)
+    public function store(Request $request)
 {
      $request->validate(
         [
         'name' => 'required',
         'email' => 'required|email|unique:users,email',
-        'dob' => 'required|date',
         'address' => 'required|string|max:255',
+        'gender' =>'required|:Male,Female,Other',
+        'dob' => 'required|date',
         'password' => 'required|min:8',
         'confirm_password' => 'required|same:password',
         ]

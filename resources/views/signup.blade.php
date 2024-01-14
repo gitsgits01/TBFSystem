@@ -64,7 +64,7 @@
                @enderror
           </span>
         <button class="elements" type="submit"><a href="">Cancel</a></button>
-        <button class="elements" type="submit"><a href="{{route('login')}}">SignUp</a></button>
+        <button class="elements" type="submit">SignUp</button>
 
             
             <!-- <div class="label_group">
