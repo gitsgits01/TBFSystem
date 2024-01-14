@@ -4,3 +4,9 @@ document.querySelector('a[href="#aboutContent"]').addEventListener('click', func
         behavior: 'smooth'
     });
 });
+
+// userprofile
+function toggleAdditionalInfo() {
+    var additionalInfo = document.getElementById('additionalInfo');
+    additionalInfo.style.display = (additionalInfo.style.display === 'none') ? 'block' : 'none';
+}

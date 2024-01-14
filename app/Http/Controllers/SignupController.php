@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use Error;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
-use App\Models\User;
-use Error;
+use Illuminate\Support\Facades\DB;
+
 
 
 class SignupController extends Controller
@@ -25,17 +27,34 @@ class SignupController extends Controller
         'name' => 'required',
         'email' => 'required|email|unique:users,email',
         'address' => 'required|string|max:255',
-        'gender' =>'required|:Male,Female,Other',
         'dob' => 'required|date',
+        'gender'=>'required|in:Male,Female,Other',
         'password' => 'required|min:8',
         'confirm_password' => 'required|same:password',
         ]
     );
-    return $request->input();
-    //$validator = Validator::make($request->all(), $validatedData);
-    //return view('signup');
-    //return redirect()->back()->withErrors($validator)->withInput();
 
-    // Create user or perform other logic
+
+    // $validator = Validator::make($request->all(), $validatedData);
+    $user=User::create([
+        'name'=>$request['name'],
+        'email'=>$request['email'],
+        'address'=>$request['address'],
+        'dob'=>$request['dob'],
+        'gender'=>$request['gender'],
+        'password'=>bcrypt($request['password']),
+    ]);
+    //$user=new User($request->all());
+      $user->save();
+
+    return redirect()->route('login')->with('success','user created successfully.');
+
+    // //login user here
+    if(auth()->attempt($request->only('email','password'))){
+        return redirect('dashboard');
+    }
+    return redirect()->back()->withErrors('Error');
+
+
 }
 }
