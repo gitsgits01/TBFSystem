@@ -3,8 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SignupController;
 use App\Http\Controllers\LoginController;
-use App\Models\User;
-use App\Models\User;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -22,13 +21,13 @@ Route::get('/', function () {
 })->name('cancel');
 
 
-// Route::get('/dbconn', function () {
-//     return view('dbconn');
+// Route::get('/profile', function () {
+//     return view('userprofile');
 // });
 
 Route::group(['middleware'=>'guest'],function(){
 Route::get('/sigup',[SignupController::class,'form'])->name('signup');
-Route::post('/signup',[SignupController::class,'signup'])->name('signup.store');
+Route::post('/signup',[SignupController::class,'store'])->name('signup.store');
 Route::get('/login',[LoginController::class,'form'])->name('login');
 Route::post('/login',[LoginController::class,'login'])->name('login');
 });

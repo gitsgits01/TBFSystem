@@ -1,3 +1,11 @@
+
+<style>
+    .about_content{
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 20px;
+        margin:5px;
+    }
+</style>
 <div class="about_content">
     <h2>Welcome to Travel Together</h2>
     <p>

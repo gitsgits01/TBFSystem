@@ -19,44 +19,45 @@
        @endif
 
 
-    <form action="{{ route('signup.store') }}" method="post" class="signup-form"> 
+    <form action="{{ route('signup.store') }}" method="POST" class="signup-form"> 
 
         @csrf
         @method('post')
         <h3>SignUp</h3>
-        <input class="elements" type="text" name="name" placeholder="Name" required>
+        <input class="elements" type="text" name="name" placeholder="Name" value="{{old('name')}}" required>
            <span class="input_error">
                 @error('name')
                  {{$message}}
                 @enderror
             </span>
-        <input class="elements" type="email" name="email" placeholder="Email" required>
+        <input class="elements" type="email" name="email" placeholder="Email" value="{{old('email')}}"required>
            <span class="input_error">
               @error('email')
                {{$message}}
               @enderror
             </span>    
-        <input class="elements" type="text" name="address" placeholder="address" required>
+        <input class="elements" type="text" name="address" placeholder="Address"value="{{old('address')}}" required>
            <span class="input_error">
-              @error('email')
+              @error('address')
                {{$message}}
               @enderror
             </span>
-        <input class="elements" type="date" name="dob" placeholder="Date of Birth" required>
+        <input class="elements" type="date" name="dob" placeholder="Date of Birth" value="{{old('dob')}}" required>
             <span class="input_error">
-              @error('email')
+              @error('dob')
                {{$message}}
               @enderror
             </span>
+            {{-- <input type="text" name="gender" palceholder="Gender" required> --}}
             <div class="radio-box">
                 <label>
-                  <input type="radio" name="gender" value="male"> Male
+                  <input type="radio" name="gender" value="male" required> Male
                 </label>
                 <label>
-                  <input type="radio" name="gender" value="female"> Female
+                  <input type="radio" name="gender" value="female" required> Female
                 </label>
                 <label>
-                  <input type="radio" name="gender" value="others"> Others
+                  <input type="radio" name="gender" value="others" required> Others
                 </label>
               </div><br/>
         <input class="elements" type="password" name="password" placeholder="Password" required>
@@ -68,12 +69,12 @@
 
         <input class="elements" type="password" name="confirm_password" placeholder="Confirm Password" required>
             <span class="input_error">
-               @error('email')
+               @error('confirm_password')
                {{$message}}
                @enderror
           </span>
         <button class="elements" type="submit"><a href="{{route('cancel')}}">Cancel</a></button>
-        <button class="elements" type="submit"><a href="{{route('login')}}">SignUp</a></button>
+        <button class="elements" type="submit">SignUp</button>
             
             <!-- <div class="label_group">
                 <label for="">First Name</label><br/>
