@@ -1,6 +1,8 @@
 
 <style>
     .about_content{
+        /* font-family: Arial, Helvetica, sans-serif;
+        font-size: 20px; */
         margin:10px;
     }
 </style>

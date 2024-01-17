@@ -50,10 +50,12 @@ class SignupController extends Controller
 
 return redirect()->route('login')->with('success','User Created Successfully ');
 
-        // //login user here
-    if(auth()->attempt($request->only('email','password'))){
-        return redirect('dashboard');
-    } 
-    return redirect()->back()->withErrors('Error');
-    }
+    // //login user here
+    // if(auth()->attempt($request->only('email','password'))){
+    //     return redirect('dashboard');
+    // }
+    //      return redirect()->back()->withErrors('Error');
+
+
+}
 }

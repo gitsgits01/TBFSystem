@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   </head>
   <body>
+    @csrf
     <header>
         <nav>
             <div class="navbar">
@@ -44,9 +45,15 @@
         <div class="text-container">
             <p>Discover  Connect <a class="rounded-pill" href="{{route('login')}}">Explore</a></p>
         </div>
-        <div class="swiper-container">
+        <div class="swiper-container" >
+            {{-- @foreach (
+                $backgroundImages as $image)
+                <div class="background-image" style="background-image:url('{{asset($image)}}');"></div>
+                 
+            @endforeach--}}
             <div class="swiper-wrapper">
-                <div class="swiper-slide image"><img src="{{ asset('photos/man2.jpg') }}" alt="Image 1"></div>
+                <div class="swiper-slide image active"><img src="{{ asset('photos/back3.jpg') }}" alt="lake"></div>
+                <div class="swiper-slide image active"><img src="{{ asset('photos/man2.jpg') }}" alt="Image 1"></div>
                 <div class="swiper-slide image"><img src="{{ asset('photos/kha2.jpg') }}" alt="Image 2"></div>
                 <div class="swiper-slide image"><img src="{{asset('photos/backgroundpkr.jpg')}}" alt="Fewa Lake"></div>
                 <!-- Add more slides as needed -->
@@ -56,6 +63,9 @@
             <div class="swiper-button-prev"></div>
         </div>
     </div>
+
+
+    
     <div id="aboutcontent">
         @include('aboutus')
     </div>
