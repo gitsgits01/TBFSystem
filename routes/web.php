@@ -29,21 +29,10 @@ Route::group(['middleware'=>'guest'],function(){
 Route::get('/sigup',[SignupController::class,'form'])->name('signup');
 Route::post('/signup',[SignupController::class,'store'])->name('signup.store');
 Route::get('/login',[LoginController::class,'form'])->name('login');
-Route::post('/login',[LoginController::class,'login'])->name('login');
+Route::post('/login',[LoginController::class,'login'])->name('login'); //baki xa banauna 
 });
 
 Route::group(['middleware'=>'auth'],function(){
-Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
+Route::get('/logout', [LoginController::class, 'logout'])->name('logout'); //this too
 
 });
-
-// Route::post('/signup',function(){
-//     $user= new User();
-//     $user->name = request('name');
-//     $user->email = request('email');
-//     $user->address = request('address');
-//     $user->dob = request('dob');
-//     $user->gender = request('gender');
-//     $user->password = request('password');
-//     $user->save();
-// });

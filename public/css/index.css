@@ -95,8 +95,6 @@ nav{
     #check:checked ~ ul{
         right:0;
     }
-    
-
 }
 
 /* main section */
@@ -141,7 +139,6 @@ nav{
 /* Optional: Style the container for the entire slider */
 .swiper-container {
     max-width: 100%;/* Adjust the width as needed */
-
     overflow: hidden;   /*hide the overflow horizzontal slider from bottom*/
 }
 
@@ -149,7 +146,7 @@ nav{
 .swiper-slide img {
     margin-top:2px;
     width: 100%; /* Ensure images take the full width of the slide */
-    height:100% ; /* Maintain aspect ratio */
+    height: 600px; /* Maintain aspect ratio */
 }
 
 /* Optional: Style the pagination bullets */

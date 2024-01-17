@@ -1,9 +1,7 @@
 
 <style>
     .about_content{
-        font-family: Arial, Helvetica, sans-serif;
-        font-size: 20px;
-        margin:5px;
+        margin:10px;
     }
 </style>
 <div class="about_content">
