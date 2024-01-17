@@ -23,15 +23,15 @@
         @endif
 
 
-          <form method="POST" action="{{ route('login') }}" class="login-form">
+          <form method="POST" action="{{ route('login.store') }}" class="login-form">
               @csrf
               <h2>Login</h2>
               <input type="email" name="email" placeholder="Email"required >
               <input type="password" name="password" placeholder="Password" required>
               <button type="submit">Login</button>
               <p>OR</p>
-              <button type="submit">SignUp</button>
-              {{-- <a href="{{route('signup')}}"> --}}
+              <button type="submit"><a href="{{route('signup')}}">SignUp</a></button>
+              
 
           </form>
       </div>

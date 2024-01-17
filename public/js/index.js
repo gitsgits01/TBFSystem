@@ -1,26 +1,5 @@
 
-
-
-// function setFullImageSize(){
-//     const img=document.getElementsByClassName('.swiper-slide');
-//     img.style.width=window.innerWidth+'px';
-//     img.style.height=window.innerHeight+'px';
-
-// }
-// setFullImageSize();
-// window.addEventListener('resize',setFullImageSize);
-
-
 document.addEventListener('DOMContentLoaded', function () {
-//     var currentImageIndex=0;
-// var images=document.querySelectorAll('.swiper-slider image');
-
-// function nextImage(){
-//     images[currentImageIndex].classList.remove('active');
-//     currentImagesIndex=(currentImageIndex+1)%images.length;
-//     images[currentImageIndex].claassList.add('active');
-// }
-// setInterval(nextImage, 3000);
 var swiper = new Swiper('.swiper-container', {
     slidesPerView: 1,
     spaceBetween: 10,
@@ -35,36 +14,22 @@ var swiper = new Swiper('.swiper-container', {
 });
 });
 
+// document.addEventListener('DOMContentLoaded', function () {
+//     const backgroundContainer = document.getElementById('backgroundContainer');
+
+//     setInterval(function () {
+//         backgroundContainer.style.transform = 'translateX(-100%)';
+//         setTimeout(function () {
+//             backgroundContainer.style.transition = 'none';
+//             backgroundContainer.style.transform = 'translateX(0)';
+//             setTimeout(function () {
+//                 backgroundContainer.style.transition = 'transform 1s ease-in-out';
+//             }, 50);
+//         }, 1000);
+//     }, 5000);
+// });
 
 
-
-//for responsive navigation
-// let navbar=document.wuerySelector('.navbar .section_nav');
-// document.querySelector('#menu-btn').onclick=()=>{
-//     navbar.classList.add('active');
-// }
-// document.querySelector('nav-close').onclick=()=>{
-//     navbar.classList.remove('active');
-// }
-// window.onscroll=()=>{
-//     navbar.classList.remove('active');
-//     if(window.scrollY>0){
-//         document.querySelector('.navbar').classList.add('active');
-//     }
-//     else{
-//         document.querySelector('.navbar').classList.remove('active');
-
-//     }
-// }
-// window.onload=()=>{
-//     if(window.scrollY>0){
-//         document.querySelector('.navbar').classList.add('active');
-//     }
-//     else{
-//         document.querySelector('.navbar').classList.remove('active');
-
-//     }
-// }
 
 //for photo slider
 const initSlider=()=>{

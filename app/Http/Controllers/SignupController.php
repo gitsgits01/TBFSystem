@@ -28,7 +28,7 @@ class SignupController extends Controller
         'email' => 'required|email|unique:users,email',
         'address' => 'required|string|max:255',
         'dob' => 'required|date',
-        'gender'=>'required|in:Male,Female,Other',
+        'gender'=>'required|in:male,female,other',
         'password' => 'required|min:8',
         'confirm_password' => 'required|same:password',
         ]
@@ -50,10 +50,10 @@ class SignupController extends Controller
     return redirect()->route('login')->with('success','user created successfully.');
 
     // //login user here
-    if(auth()->attempt($request->only('email','password'))){
-        return redirect('dashboard');
-    }
-         return redirect()->back()->withErrors('Error');
+    // if(auth()->attempt($request->only('email','password'))){
+    //     return redirect('dashboard');
+    // }
+    //      return redirect()->back()->withErrors('Error');
 
 
 }

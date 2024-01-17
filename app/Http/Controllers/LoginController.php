@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class LoginController extends Controller
 {
@@ -17,24 +18,24 @@ class LoginController extends Controller
 
     
     public function login(Request $request)
-{
-    // Validate the login request
-    $credentials = $request->validate([
-        'email' => 'required|email',
-        'password' => 'required',
-    ]);
-
-    // Attempt to log the user in
-    if (auth()->attempt($credentials)) {
-        // Authentication successful, redirect to dashboard or desired page
-        return redirect('/dashboard');
+    {
+        $credentials = $request->validate([
+            'email' => 'required|email',
+            'password' => 'required',
+        ]);
+    
+        // Attempt to log the user in
+        if (auth()->attempt($credentials)) {
+            // Authentication successful, redirect to dashboard or desired page
+                return redirect()->route('/dashbord');
+    
+        }
+    
+        // Authentication failed, redirect back with error message
+        return redirect()->back()->withInput()->withErrors(['email','password' => 'Invalid credentials']);
     }
 
-    // Authentication failed, redirect back with error message
-    return redirect()->back()->withInput()->withErrors(['email','password' => 'Invalid credentials']);
-}
-
-    // public function aboutus(){
-    //     return view('aboutus');
+    // Validate the login request
+    
     // }
 }
