@@ -27,7 +27,7 @@ class LoginController extends Controller
         // Attempt to log the user in
         if (auth()->attempt($credentials)) {
             // Authentication successful, redirect to dashboard or desired page
-                return redirect()->route('/dashbord');
+                return redirect()->route('dashboard');
     
         }
     

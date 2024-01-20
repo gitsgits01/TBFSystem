@@ -24,14 +24,11 @@ Route::get('/', function () {
 })->name('cancel');
 
 
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// });
 
 // Route::get('/',[IndexController::class,'index']);
 
 Route::group(['middleware'=>'guest'],function(){
-Route::get('/sigup',[SignupController::class,'form'])->name('signup');
+Route::get('/signup',[SignupController::class,'form'])->name('signup');
 Route::post('/signup',[SignupController::class,'store'])->name('signup.store');
 Route::get('/login',[LoginController::class,'form'])->name('login');
 Route::post('/login',[LoginController::class, 'login'])->name('login.store');
