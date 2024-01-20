@@ -8,12 +8,16 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\app\Providers\RouteServiceProvider as ServiceProvider;
+use Illuminate\Support\Facades\Redirect;
+
 
 
 
 class SignupController extends Controller
 {
     public function form(){
+
         return view('signup');
     }
     // public function home(){
@@ -46,8 +50,6 @@ class SignupController extends Controller
     ]);
     //$user=new User($request->all());
       $user->save();
-
-
 return redirect()->route('login')->with('success','User Created Successfully ');
 
     // //login user here

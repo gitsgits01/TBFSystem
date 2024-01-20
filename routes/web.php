@@ -7,6 +7,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MessageController;
 use Illuminate\Auth\Events\Login;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
+use app\Http\Controllers\Auth;
 // use App\Http\Controllers\IndexController;
 /*
 |--------------------------------------------------------------------------
@@ -31,15 +32,16 @@ Route::get('/', function () {
 // Route::get('/',[IndexController::class,'index']);
 
 Route::group(['middleware'=>'guest'],function(){
-Route::get('/sigup',[SignupController::class,'form'])->name('signup');
+Route::get('/signup',[SignupController::class,'form'])->name('signup');
 Route::post('/signup',[SignupController::class,'store'])->name('signup.store');
 Route::get('/login',[LoginController::class,'form'])->name('login');
-Route::post('/login',[LoginController::class, 'login'])->name('login.store');
 });
 Route::get('/dashboard',DashboardController::class,'__invoke')->name('dashboard');
 
 
 Route::group(['middleware'=>'auth'],function(){
+    Route::post('/login',[LoginController::class, 'login'])->name('login.store');
+
     // Route::get('/dashboard',[DashboardController::class,'dashboard'])->name('dashboard');
 
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');

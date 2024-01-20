@@ -23,6 +23,9 @@
 
         @csrf
         @method('post')
+        @if(Session::has('success'))
+        <div class="alert alert-success">{{Session::get('success')}}</div>
+        @endif
         <h3>SignUp</h3>
         <input class="elements" type="text" name="name" placeholder="Name" value="{{old('name')}}" required>
            <span class="input_error">

@@ -19,7 +19,7 @@
           <p class="text-danger">{{Session::get('error')}}</p>
         @endif
         @if(Session::has('success'))
-          <p class="text-sucess">{{Session::get('sucess')}}</p>
+          <p class="text-sucess">{{Session::get('success')}}</p>
         @endif
 
 
