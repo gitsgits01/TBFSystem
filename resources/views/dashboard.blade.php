@@ -20,12 +20,12 @@
           TRAVEL <i class="fa-solid fa-people-group"></i> TOGETHER 
         </div>
         <div class="item-list">
-          <ul>
-            <li><i class="fa-solid fa-braille"></i>Dashboard</li>
-            <li><i class="fa-regular fa-calendar-days"></i>Schedule</li>
-            <li><i class="fa-solid fa-message fa-beat"></i>Message</li>
-            <li><i class="fa-solid fa-gears"></i>Settings</li>
-            <li><i class="fa-light fa-right-from-bracket"></i>Logout</li>
+          
+            <div class="items"><i class="fa-solid fa-braille"></i>Dashboard</div>
+            <div class="items"><i class="fa-regular fa-calendar-days"></i>Schedule</div>
+            <div class="items"><i class="fa-solid fa-message fa-beat"></i>Message</div>
+            <div class="items"><i class="fa-solid fa-gears"></i>Settings</div>
+            <div class="items"><i class="fa-solid fa-right-from-bracket"></i>Logout</div>
   
           </ul>
         </div>
@@ -36,7 +36,11 @@
         @if(Auth::check())
         <p>Hello, {{Auth::user()->name}}</p>
         @endif
+        <form action="" method="get">
+          <input type="text" name="search" placeholder="Search...">
+          <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
       </div>
+      
     </div>
 
     <div id="right-sidebar">

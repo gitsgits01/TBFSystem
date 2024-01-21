@@ -41,21 +41,24 @@ body{
     .nav-list #travel{
         font-family: 'Courier New', Courier, monospace;
         font-weight: bold;
-        font-size:20px;
+        font-size:25px;
         background-color: #1d3557;
         color:whitesmoke;
         padding:5px;
         margin-bottom: 50px;
     }
-    .nav-list .item-list ul li{
-        margin: 5px;
-    
-        display: inline-block;
-        grid-template-rows: auto;
-        gap:15px;
-        text-decoration: none;
+    .nav-list .item-list .items{
+       row-gap: 10px;
+       font-size: 20px;
+       padding: 10px;
+       display: flex;
+       align-items: center;
+       box-sizing: border-box;
     }
-    .nav-list .item-list ul li:hover{
+    .items i{
+        margin-right: 10px;
+    }
+    .nav-list .item-list .items:hover{
         background-color: #1d3557;
         color:whitesmoke;
     }
@@ -66,5 +69,41 @@ body{
     box-sizing: border-box;
     overflow-y: auto;
 }
+.hello p{
+    text-align: left;
+    vertical-align: top;
+    margin-right: 10px;
+}
+#main-content{
+    width: calc(100% -500px);
+}
+.hello{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.hello p{
+    margin-right: 5px;
+}
+.hello form{
+    display: flex;
+    align-items: center;
+}
+.hello input[type="text"]{
+    height: 40px;
+    width: 400px;
+    padding: 5px;
+    margin-right: 5px;
+    margin-top: -10px;
+    box-sizing: border-box;
+}
+button{
+    height: 40px;
+    width:30px;
+    margin-right: 5px;
+    box-sizing: border-box;
+}
+
+
 
 
