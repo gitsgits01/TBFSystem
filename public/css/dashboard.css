@@ -1,0 +1,40 @@
+*{
+    margin:0;
+    padding:0;
+}
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: whitesmoke;
+}
+.nav-list{
+height:100%;
+width:300px;
+float:left;
+position:relative;
+
+
+}
+.nav-list #travel{
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    font-size:20px;
+    background-color: #1d3557;
+    color:whitesmoke;
+    padding:5px;
+    margin-bottom: 50px;
+}
+.nav-list .item-list ul li{
+    margin: 5px;
+
+    display: inline-block;
+    grid-template-rows: auto;
+    
+    gap:15px;
+    text-decoration: none;
+}
+.nav-list .item-list ul li:hover{
+    background-color: #1d3557;
+    color:whitesmoke;
+}
