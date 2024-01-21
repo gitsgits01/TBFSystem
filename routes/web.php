@@ -32,14 +32,14 @@ Route::group(['middleware'=>'guest'],function(){
 Route::get('/signup',[SignupController::class,'form'])->name('signup');
 Route::post('/signup',[SignupController::class,'store'])->name('signup.store');
 Route::get('/login',[LoginController::class,'form'])->name('login');
+Route::post('/login',[LoginController::class, 'login'])->name('login.store');
 });
 Route::get('/dashboard',DashboardController::class,'__invoke')->name('dashboard');
 
 
 Route::group(['middleware'=>'auth'],function(){
-    Route::post('/login',[LoginController::class, 'login'])->name('login.store');
 
-    // Route::get('/dashboard',[DashboardController::class,'dashboard'])->name('dashboard');
+    //Route::get('/dashboard',DashboardController::class.'@__invoke')->name('dashboard');
 
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
