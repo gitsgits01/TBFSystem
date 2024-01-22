@@ -24,11 +24,12 @@
           <li><i class="fa-regular fa-calendar-days"></i>Schedule</li>
           <li><i class="fa-solid fa-message fa-beat"></i>Message</li>
           <li><i class="fa-solid fa-gears"></i>Settings</li>
-          <li><i class="fa-light fa-right-from-bracket"></i>Logout</li>
+          <li><a href="#messagePlace"><i class="fa-light fa-right-from-bracket"></i>Logout</a></li>
 
         </ul>
       </div>
     </div>
+
     <div class="hello">
       @if(Auth::check())
       <p>Hello, {{Auth::user()->name}}</p>

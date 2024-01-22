@@ -13,7 +13,7 @@ height:100%;
 width:300px;
 float:left;
 position:relative;
-
+box-shadow:5px 5px 10px rgba(138, 132, 132, 0.3) ;
 
 }
 .nav-list #travel{
@@ -26,10 +26,10 @@ position:relative;
     margin-bottom: 50px;
 }
 .nav-list .item-list ul li{
-    margin: 5px;
+    margin-bottom: 50px;
 
-    display: inline-block;
-    grid-template-rows: auto;
+    display: -ms-inline-flexbox;
+    grid-template-rows: 6;
     
     gap:15px;
     text-decoration: none;

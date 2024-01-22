@@ -1,5 +1,5 @@
-
-@extends('dashbord')
+<div id="messagePlace">
+@extends('dashboard')
 
 @section('content')
     <h1>Messages</h1>
@@ -33,3 +33,4 @@
         <button type="submit">Send Message</button>
     </form>
 @endsection
+</div>
