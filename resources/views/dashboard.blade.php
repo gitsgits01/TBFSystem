@@ -14,6 +14,7 @@
   </head>
   <body>
     @csrf
+<<<<<<< HEAD
     <div class="nav-list">
       <div id="travel">
         TRAVEL <i class="fa-solid fa-people-group"></i> TOGETHER 
@@ -34,12 +35,42 @@
       @if(Auth::check())
       <p>Hello, {{Auth::user()->name}}</p>
       @endif
+=======
+    <div id="left-sidebar">
+      <div class="nav-list">
+        <div id="travel">
+          TRAVEL <i class="fa-solid fa-people-group"></i> TOGETHER 
+        </div>
+        <div class="item-list">
+          
+            <div class="items"><i class="fa-solid fa-braille"></i>Dashboard</div>
+            <div class="items"><i class="fa-regular fa-calendar-days"></i>Schedule</div>
+            <div class="items"><i class="fa-solid fa-message fa-beat"></i>Message</div>
+            <div class="items"><i class="fa-solid fa-gears"></i>Settings</div>
+            <div class="items"><i class="fa-solid fa-right-from-bracket"></i>Logout</div>
+  
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div id="main-content">
+      <div class="hello">
+        @if(Auth::check())
+        <p>Hello, {{Auth::user()->name}}</p>
+        @endif
+        <form action="" method="get">
+          <input type="text" name="search" placeholder="Search...">
+          <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+      </div>
+      
+>>>>>>> d4f6316bde25e99169d227dc5ed28ba709468c08
     </div>
 
-    <!--Map section-->
+    <div id="right-sidebar">
+
+    </div>
     @section('content')
     <div id="map" style="height: 400px;"></div>
-
     <script>
       function initMap() {
           // Create a map centered at a specific location (e.g., Kathmandu, Nepal)
@@ -50,6 +81,7 @@
       }
     </script>
     @endsection
+    
     
   </body>
 </html>

@@ -10,7 +10,6 @@ var swiper = new Swiper('.swiper-container', {
     touch:{
         enabled:true,
     },
-    
 });
 });
 

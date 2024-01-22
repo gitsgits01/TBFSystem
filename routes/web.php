@@ -7,6 +7,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MessageController;
 use Illuminate\Auth\Events\Login;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
+use app\Http\Controllers\Auth;
 // use App\Http\Controllers\IndexController;
 /*
 |--------------------------------------------------------------------------
@@ -37,7 +38,8 @@ Route::get('/dashboard',DashboardController::class,'__invoke')->name('dashboard'
 
 
 Route::group(['middleware'=>'auth'],function(){
-    // Route::get('/dashboard',[DashboardController::class,'dashboard'])->name('dashboard');
+
+    //Route::get('/dashboard',DashboardController::class.'@__invoke')->name('dashboard');
 
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 

@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Redirect;
 
 class LoginController extends Controller
 {
@@ -29,10 +31,10 @@ class LoginController extends Controller
             // Authentication successful, redirect to dashboard or desired page
                 return redirect()->route('dashboard');
     
-        }
-    
+        }else{
         // Authentication failed, redirect back with error message
         return redirect()->back()->withInput()->withErrors(['email','password' => 'Invalid credentials']);
+        }
     }
 
     // Validate the login request

@@ -11,6 +11,7 @@ class DashboardController extends Controller
     public function __invoke()
     {
         return view('dashboard');
+        
         // // Authorize the "update" ability for the current user on the given post
         // $this->authorize('update', $post);
     

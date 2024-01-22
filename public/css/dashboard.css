@@ -3,38 +3,107 @@
     padding:0;
 }
 body{
+    margin:0;
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: whitesmoke;
-}
-.nav-list{
-height:100%;
-width:300px;
-float:left;
-position:relative;
-box-shadow:5px 5px 10px rgba(138, 132, 132, 0.3) ;
-
-}
-.nav-list #travel{
-    font-family: 'Courier New', Courier, monospace;
-    font-weight: bold;
-    font-size:20px;
-    background-color: #1d3557;
-    color:whitesmoke;
-    padding:5px;
-    margin-bottom: 50px;
-}
-.nav-list .item-list ul li{
-    margin-bottom: 50px;
-
-    display: -ms-inline-flexbox;
-    grid-template-rows: 6;
-    
-    gap:15px;
+    overflow: hidden;
+    font-family:'Times New Roman', Times, serif;
     text-decoration: none;
 }
-.nav-list .item-list ul li:hover{
-    background-color: #1d3557;
-    color:whitesmoke;
+#left-sidebar, #right-sidebar {
+    position: fixed;
+    top: 0;
+    height: 100vh;
+    width: 300px;
+    background-color:whitesmoke;
+    padding: 20px;
+    box-sizing: border-box;
+    overflow-y: auto;
 }
+
+#left-sidebar {
+    left: 0;
+}
+
+#right-sidebar {
+    right: 0;
+}
+.nav-list{
+    height:100%;
+    width:300px;
+    float:left;
+    position:relative;
+    
+    
+    }
+    .nav-list #travel{
+        font-family: 'Courier New', Courier, monospace;
+        font-weight: bold;
+        font-size:25px;
+        background-color: #1d3557;
+        color:whitesmoke;
+        padding:5px;
+        margin-bottom: 50px;
+    }
+    .nav-list .item-list .items{
+       row-gap: 10px;
+       font-size: 20px;
+       padding: 10px;
+       display: flex;
+       align-items: center;
+       box-sizing: border-box;
+    }
+    .items i{
+        margin-right: 10px;
+    }
+    .nav-list .item-list .items:hover{
+        background-color: #1d3557;
+        color:whitesmoke;
+    }
+#main-content {
+    margin-left: 300px; /* Width of the left sidebar */
+    margin-right: 200px; /* Width of the right sidebar */
+    padding: 20px;
+    box-sizing: border-box;
+    overflow-y: auto;
+}
+.hello p{
+    text-align: left;
+    vertical-align: top;
+    margin-right: 10px;
+}
+#main-content{
+    width: calc(100% -500px);
+}
+.hello{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.hello p{
+    margin-right: 5px;
+}
+.hello form{
+    display: flex;
+    align-items: center;
+}
+.hello input[type="text"]{
+    height: 40px;
+    width: 400px;
+    padding: 5px;
+    margin-right: 5px;
+    margin-top: -10px;
+    box-sizing: border-box;
+}
+button{
+    height: 40px;
+    width:30px;
+    margin-right: 5px;
+    box-sizing: border-box;
+}
+
+
+
+

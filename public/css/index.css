@@ -101,8 +101,6 @@ nav{
     #check:checked ~ ul{
         right:0;
     }
-    
-
 }
 
 /* main section */
@@ -166,7 +164,6 @@ nav{
 /* Optional: Style the container for the entire slider */
 .swiper-container {
     max-width: 100%;/* Adjust the width as needed */
-
     overflow: hidden;   /*hide the overflow horizzontal slider from bottom*/
 }
 
