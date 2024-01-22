@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SignupController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\MessageController;
+use App\Http\Controllers\ChatController;
 use Illuminate\Auth\Events\Login;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 use app\Http\Controllers\Auth;
@@ -46,8 +46,12 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 });
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/messages', [MessageController::class, 'index'])->name('messages.index');
-    Route::post('/messages', [MessageController::class, 'store'])->name('messages.store');
+    Route::get('/chat',[ChatController::class,'index'])->name('chat');
+    Route::post('/send-message',[ChatController::class, 'sendMessage']);
+    
+    // Route::get('/message', [MessageController::class, 'index'])->name('message.index');
+    // Route::get('/message/{userId}', [MessageController::class, 'show'])->name('message.show');
+    // Route::post('/message', [MessageController::class, 'store'])->name('message.store');
 });
 
 
