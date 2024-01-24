@@ -22,10 +22,10 @@
         <div class="item-list">
           
             <div class="items"><i class="fa-solid fa-braille"></i>Dashboard</div>
-            <div class="items"><a href="{{route('schedule')}}"><i class="fa-regular fa-calendar-days"></i>Schedule</div>
-            <div class="items"><a href="{{route('chat')}}"><i class="fa-solid fa-message fa-beat"></i>Message</a></div>
-            <div class="items"><i class="fa-solid fa-gears"></i>Settings</div>
-            <div class="items"><a href="{{route('logout')}}"><i class="fa-solid fa-right-from-bracket"></i>Logout</div>
+            <div class="items"><a href="{{route('schedule')}}"><i class="fa-regular fa-calendar-days"></i>Schedule</a></div>
+            <div class="items"><i class="fa-solid fa-message fa-beat"></i>Message</div>
+            <div class="items"><a href="{{route('changepassword')}}"><i class="fa-solid fa-gears"></i>Settings</a></div>
+            <div class="items"><a href="{{route('logout')}}"><i class="fa-solid fa-right-from-bracket"></i>Logout</a></div>
   
           </ul>
         </div>
