@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>SignUp Page</title>
+    <title>Schedule</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -19,7 +19,7 @@
        @endif
 
 
-    <form action="{{ route('') }}" method="POST" class="signup-form"> 
+    <form action="{{ route('') }}" method="POST" class="schedule-form"> 
 
         @csrf
         @method('post')
