@@ -15,15 +15,7 @@ class LoginController extends Controller
     public function form(){
         return view('login');
     }
-    public function logout() : RedirectResponse
-    {
-        Session()->forget($email = '$key');
-        Session()->forget($password = 'REQ_PASSWORD');
-        Auth::logout();
-
-        return redirect('login');
-    }
-        
+   
     
     public function login(Request $request)
     {
@@ -49,4 +41,20 @@ class LoginController extends Controller
         return redirect()->back()->withInput()->withErrors(['email','password' => 'Invalid credentials']);
         }
     }
+
+    public function logout():RedirectResponse
+
+    {
+        // if(Session::has('email')){
+        //     Session::pull('email');
+        // }
+        Session()->forget('email');
+        Session()->forget('password');
+        Auth::logout();
+
+        return redirect('login');
+    }
+        
+
+    
 }

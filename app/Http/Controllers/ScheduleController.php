@@ -7,7 +7,10 @@ use Illuminate\Http\Request;
 
 class ScheduleController extends Controller
 {
-    public function schedule(Request $request){
+    public function schedule(){
+        return view('schedule');
+    }
+    public function store(Request $request){
         $posts=Schedule::create([
             'location'=>$request['location'],
             'destination'=>$request['destination'],

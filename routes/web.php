@@ -6,6 +6,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ChatController;
 use App\Http\Controllers\LogoutController;
+use App\Http\Controllers\UserController;
 use Illuminate\Auth\Events\Login;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 use app\Http\Controllers\Auth;
@@ -37,27 +38,28 @@ Route::post('/signup',[SignupController::class,'store'])->name('signup.store');
 Route::get('/login',[LoginController::class,'form'])->name('login');
 Route::post('/login',[LoginController::class, 'login'])->name('login.store');
 });
-//Route::get('/dashboard',DashboardController::class,'__invoke')->name('dashboard');
-
 
 Route::group(['middleware'=>'auth'],function(){
+    Route::get('/schedule', [ScheduleController::class,'schedule'])->name('schedule');
+    Route::post('/schedule',[ScheduleController::class,'store'])->name('schedule.store');
 
     Route::get('/dashboard',DashboardController::class.'@__invoke')->name('dashboard');
-    //Route::get('/create-post',DashboardController::class,'crepost')->name('create-post');
     Route::get('/logout', [LoginController::class,'logout'])->name('logout');
-    Route::get('/schedule', [ScheduleController::class,'schedule'])->name('schedule');
+
+    Route::get('/changepassword',[UserController::class,'changePassword'] )->name('changepassword');
+    Route::post('/updatepassword', [UserController::class,'updatePassword'])->name('updatepassword');
+   Route::get('/delete/(id)',[UserController::class,'delete'])->name('delete.account');
 });
 Route::middleware(['auth'])->group(function () {
-    Route::get('/chat',[ChatController::class,'index'])->name('chat');
-    Route::post('/send-message',[ChatController::class, 'sendMessage']);
-
     
+    Route::post('/send-message',[ChatController::class, 'sendMessage']);
+    Route::get('/dashboard',DashboardController::class.'@__invoke')->name('dashboard');
+
     // Route::get('/message', [MessageController::class, 'index'])->name('message.index');
     // Route::get('/message/{userId}', [MessageController::class, 'show'])->name('message.show');
     // Route::post('/message', [MessageController::class, 'store'])->name('message.store');
     
 
 });
-Route::resource('schedules','ScheduleController');
 
 

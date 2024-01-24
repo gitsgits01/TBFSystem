@@ -21,7 +21,7 @@
             <p>Location: City, Country</p>
         </div>
         <div class="additional-info" id="additionalInfo">
-            <p>Bio: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <p>Bio: </p>
             <p>Age: 25</p>
             <p>Interests: Reading, Traveling</p>
         </div>
