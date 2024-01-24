@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\support\Facades\Session;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Redirect;
 
@@ -12,10 +14,14 @@ class LoginController extends Controller
     public function form(){
         return view('login');
     }
-    public function logout(){
-        session()->flush();
-        auth()->logout();
-        return redirect('login');
+    public function logout(Request $request){
+        $request->id;
+        Auth::logout(); // Log the user out
+        Session::forget('id');
+        $request->session()->invalidate(); // Invalidate the session
+
+        $request->session()->regenerateToken();
+        return redirect()->route('login');
     }
 
     
@@ -37,7 +43,5 @@ class LoginController extends Controller
         }
     }
 
-    // Validate the login request
     
-    // }
 }

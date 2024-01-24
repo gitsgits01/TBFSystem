@@ -34,21 +34,21 @@ Route::post('/signup',[SignupController::class,'store'])->name('signup.store');
 Route::get('/login',[LoginController::class,'form'])->name('login');
 Route::post('/login',[LoginController::class, 'login'])->name('login.store');
 });
-Route::get('/dashboard',DashboardController::class,'__invoke')->name('dashboard');
+//Route::get('/dashboard',[DashboardController::class,'__invoke'])->name('dashboard');
 
 
-Route::group(['middleware'=>'auth'],function(){
+Route::group(['middleware'=>'web'],function(){
 
-    //Route::get('/dashboard',DashboardController::class.'@__invoke')->name('dashboard');
+    //Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
-Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 });
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/chat',[ChatController::class,'index'])->name('chat');
-    Route::post('/send-message',[ChatController::class, 'sendMessage']);
     
+    Route::post('/send-message',[ChatController::class, 'sendMessage']);
+    Route::get('/dashboard',DashboardController::class.'@__invoke')->name('dashboard');
+
     // Route::get('/message', [MessageController::class, 'index'])->name('message.index');
     // Route::get('/message/{userId}', [MessageController::class, 'show'])->name('message.show');
     // Route::post('/message', [MessageController::class, 'store'])->name('message.store');
