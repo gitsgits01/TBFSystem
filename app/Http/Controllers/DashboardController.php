@@ -20,6 +20,9 @@ class DashboardController extends Controller
     
         // return redirect()->route('posts.index');
     }
+    public function crepost(){
+        return view('create_post');
+    }
     
     
 }

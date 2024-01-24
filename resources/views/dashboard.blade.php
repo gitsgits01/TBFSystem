@@ -22,10 +22,10 @@
         <div class="item-list">
           
             <div class="items"><i class="fa-solid fa-braille"></i>Dashboard</div>
-            <div class="items"><i class="fa-regular fa-calendar-days"></i>Schedule</div>
+            <div class="items"><a href="{{route('schedule')}}"><i class="fa-regular fa-calendar-days"></i>Schedule</div>
             <div class="items"><a href="{{route('chat')}}"><i class="fa-solid fa-message fa-beat"></i>Message</a></div>
             <div class="items"><i class="fa-solid fa-gears"></i>Settings</div>
-            <div class="items"><i class="fa-solid fa-right-from-bracket"></i>Logout</div>
+            <div class="items"><a href="{{route('logout')}}"><i class="fa-solid fa-right-from-bracket"></i>Logout</div>
   
           </ul>
         </div>
@@ -44,9 +44,15 @@
     </div>
 
     <div id="right-sidebar">
-
-    </div>
-    @section('content')
+      <div class="profile">
+       <h3><a href="route{{('create-post')}}">Create Post</a></h3>
+      </div>
+      <div>
+        <p>Navigation</p>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3593955.613923965!2d84.13015055000002!3d28.397455!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3995e8c77d2e68cf%3A0x34a29abcd0cc86de!2sNepal!5e0!3m2!1sen!2snp!4v1705989742345!5m2!1sen!2snp" 
+      width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+      {{-- @section('content')
     <div id="map" style="height: 400px;"></div>
     <script>
       function initMap() {
@@ -57,7 +63,10 @@
           });
       }
     </script>
-    @endsection
+    @endsection --}}
+
+    </div>
+    
     
     
   </body>
