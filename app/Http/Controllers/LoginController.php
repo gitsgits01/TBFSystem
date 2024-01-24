@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Providers\RouteServiceProvider;
+use Illuminate\Contracts\Session\Session;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\support\Facades\Session;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Redirect;
 
@@ -14,16 +15,15 @@ class LoginController extends Controller
     public function form(){
         return view('login');
     }
-    public function logout(Request $request){
-        $request->id;
-        Auth::logout(); // Log the user out
-        Session::forget('id');
-        $request->session()->invalidate(); // Invalidate the session
+    public function logout() : RedirectResponse
+    {
+        Session()->forget($email = '$key');
+        Session()->forget($password = 'REQ_PASSWORD');
+        Auth::logout();
 
-        $request->session()->regenerateToken();
-        return redirect()->route('login');
+        return redirect('login');
     }
-
+        
     
     public function login(Request $request)
     {
@@ -31,13 +31,20 @@ class LoginController extends Controller
             'email' => 'required|email',
             'password' => 'required',
         ]);
-    
-        // Attempt to log the user in
+        if($credentials){
+           
+             // Attempt to log the user in
         if (auth()->attempt($credentials)) {
+
+            Session()->put('email', $credentials);
+            Session()->put('password', $credentials);
             // Authentication successful, redirect to dashboard or desired page
                 return redirect()->route('dashboard');
     
-        }else{
+        }
+        }
+    
+       else{
         // Authentication failed, redirect back with error message
         return redirect()->back()->withInput()->withErrors(['email','password' => 'Invalid credentials']);
         }

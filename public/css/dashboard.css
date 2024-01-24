@@ -29,7 +29,16 @@ body{
 
 #right-sidebar {
     right: 0;
+    margin-right: 20px;
+    height:100%;
+    overflow: hidden;
 }
+#right-sidebar .profile a{
+    text-decoration: none;
+    color:#1d3557;
+    font-size: 20px;
+}
+
 .nav-list{
     height:100%;
     width:300px;
