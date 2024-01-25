@@ -39,11 +39,16 @@ Route::get('/login',[LoginController::class,'form'])->name('login');
 Route::post('/login',[LoginController::class, 'login'])->name('login.store');
 });
 
+
+
 Route::group(['middleware'=>'auth'],function(){
     Route::get('/schedule', [ScheduleController::class,'schedule'])->name('schedule');
+    Route::get('/schedule/create',[ScheduleController::class,'create'])->name('schedule.create');
     Route::post('/schedule',[ScheduleController::class,'store'])->name('schedule.store');
+    Route::get('/Schedules',[ScheduleController::class,'show'])->name('show');
 
     Route::get('/dashboard',DashboardController::class.'@__invoke')->name('dashboard');
+
     Route::get('/logout', [LoginController::class,'logout'])->name('logout');
 
     Route::get('/changepassword',[UserController::class,'changePassword'] )->name('changepassword');

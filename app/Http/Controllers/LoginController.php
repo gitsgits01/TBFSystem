@@ -23,34 +23,28 @@ class LoginController extends Controller
             'email' => 'required|email',
             'password' => 'required',
         ]);
-        if($credentials){
-           
+    
              // Attempt to log the user in
         if (auth()->attempt($credentials)) {
-
-            Session()->put('email', $credentials);
-            Session()->put('password', $credentials);
             // Authentication successful, redirect to dashboard or desired page
                 return redirect()->route('dashboard');
     
-        }
-        }
-    
-       else{
+        }else{
         // Authentication failed, redirect back with error message
         return redirect()->back()->withInput()->withErrors(['email','password' => 'Invalid credentials']);
         }
     }
 
-    public function logout():RedirectResponse
+    public function logout(Request $request)
 
     {
         // if(Session::has('email')){
         //     Session::pull('email');
         // }
-        Session()->forget('email');
-        Session()->forget('password');
+        Session()->flush();
         Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
 
         return redirect('login');
     }
