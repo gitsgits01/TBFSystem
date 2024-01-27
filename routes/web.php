@@ -50,6 +50,8 @@ Route::group(['middleware'=>'auth'],function(){
     Route::get('/dashboard',DashboardController::class.'@__invoke')->name('dashboard');
 
     Route::get('/logout', [LoginController::class,'logout'])->name('logout');
+    //Route::get('/create_post', [DashBoardController::class,'post'] );
+    Route::post('/create_post', [DashboardController::class,'crepost'])->name('create_post');
 
     Route::get('/changepassword',[UserController::class,'changePassword'] )->name('changepassword');
     Route::post('/updatepassword', [UserController::class,'updatePassword'])->name('updatepassword');

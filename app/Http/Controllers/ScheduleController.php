@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Schedule;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 
 class ScheduleController extends Controller
 {
@@ -11,11 +13,24 @@ class ScheduleController extends Controller
         return view('schedule');
     }
     public function store(Request $request){
+        $user=Auth::user();
+        $userid=$user->id;
+        $username=$user->name;
+        // if(Auth::check()){
+        //     $request->validate([
+        //         'user_id'=> 'required|exists:users,id',
+        //         'user_name'=> 'required|exists:users,name',
+        //     ]);
+        //}
         $posts=Schedule::create([
             'location'=>$request['location'],
             'destination'=>$request['destination'],
             'date'=>$request['date'],
-            'days'=>$request['days']
+            'days'=>$request['days'],
+            'user_id'=> $userid,
+            'user_name'=>$username,
+            // $request->user_id($userid),
+            // $request->user_name($username),
         ]);
         //$user=new User($request->all());
           $posts->save();

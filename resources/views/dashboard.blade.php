@@ -45,10 +45,31 @@
 
     <div id="right-sidebar">
       <div class="profile">
-       <h3><a href="route{{('create-post')}}">Create Post</a></h3>
+       <h4>Create Post</h4>
+       <form  action="{{route('create_post')}}" method="post">
+        @csrf
+        <textarea name="title" placeholder="What's on your mind?"></textarea>
+        <input type="file" name="image">
+        <button  type="submit"  class="btn btn-lg btn-success" style="width: 15px"> Post </button>
+        {{-- <div class="create-post">
+            <label>Title</label>
+            <input type="text" name="title">
+        </div>
+        <div>
+            <label>Description</label>
+            <textarea  name="description"></textarea>
+        </div>
+         <div>
+            <label>AddImage</label>
+            <input type="file" name="image">
+        </div>
+        <div>
+            <input type="submit" value="Post">
+        </div> --}}
+    </form>
       </div>
       <div>
-        <p>Navigation</p>
+        <h4>Navigation</h4>
       <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3593955.613923965!2d84.13015055000002!3d28.397455!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3995e8c77d2e68cf%3A0x34a29abcd0cc86de!2sNepal!5e0!3m2!1sen!2snp!4v1705989742345!5m2!1sen!2snp" 
       width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>

@@ -33,7 +33,7 @@ class UserController extends Controller
             'password' => Hash::make($request->input('new_password')),
         ]);
         //$user->save();
-        return redirect()->route('dashboard')->with('success', 'Password changed successfully!');
+        return redirect()->route('login')->with('success', 'Password changed successfully!');
     }
 
     public function delete($id){

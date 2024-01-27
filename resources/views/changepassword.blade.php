@@ -25,7 +25,7 @@ $<!doctype html>
     
         <button type="submit">Change Password</button>
         <p>OR</p>
-        <button type="submit"><a href="{{route('delete.account/'.$user)}}">Delete Account</a></button>
+        <button type="submit"><a href="{{route('delete.account')}}">Delete Account</a></button>
     </form>
     <div>
     
