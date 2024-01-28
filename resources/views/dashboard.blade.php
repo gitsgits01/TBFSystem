@@ -60,9 +60,24 @@
        <form  action="{{route('create_post')}}" method="post">
         @csrf
         <textarea name="title" placeholder="What's on your mind?"></textarea>
-        <input type="file" name="image"><br>
-        <input class="btn btn-success" type="submit" value="Post">
-        </form>
+        <input type="file" name="image">
+        <input  type="submit"  class="btn btn-success" value="POST"> 
+        {{-- <div class="create-post">
+            <label>Title</label>
+            <input type="text" name="title">
+        </div>
+        <div>
+            <label>Description</label>
+            <textarea  name="description"></textarea>
+        </div>
+         <div>
+            <label>AddImage</label>
+            <input type="file" name="image">
+        </div>
+        <div>
+            <input type="submit" value="Post">
+        </div> --}}
+    </form>
       </div>
       <div>
         <h4>Navigation</h4>
