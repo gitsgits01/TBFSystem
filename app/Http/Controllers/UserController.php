@@ -21,19 +21,24 @@ class UserController extends Controller
             'confirm_password'=>'required|same:new_password',
         ]);
     
-        //$user = Auth::user();
-        $user = User::auth();
+        $user = Auth::user();
+        //$user = User::auth();
         // Verify current password
-        if (!Hash::check($request->input('current_password'), $user->password)) {
+        if (!Hash::check($request->current_password,auth()-> $user->password)) {
             return back()->withErrors(['current_password' => 'The provided current password is incorrect.']);
         }
-    
+        $update=user::whereId(auth()->id())->update([
+            'password'=>Hash::make($request->new_password)]);
+            if( $update ){
+                return redirect()->back()->with('success','Password changed successfully');
+            }
+            return redirect()->back()->with('error','Password Changed failed');
         // Update password
-        $user->update([
-            'password' => Hash::make($request->input('new_password')),
-        ]);
+        // $user->update([
+        //     'password' => Hash::make($request->input('new_password')),
+        // ]);
         //$user->save();
-        return redirect()->route('login')->with('success', 'Password changed successfully!');
+        // return redirect()->route('login')->with('success', 'Password changed successfully!');
     }
 
     public function confirm_deletion(){
@@ -43,18 +48,21 @@ class UserController extends Controller
         $request->validate([
             'password' => 'required',
         ]);
-        $user=Auth::user();
-        if(Hash::check($request->input('password'),$user->password)){
-            $user->delete();
         
-        Auth::logout(); //logout the user after deletion
-        return redirect('/')->with('success','Account deleted successfully');
-        }
-        return redirect()->back->with('error','PAssword verification failed. Please try again.');
+        $user=Auth::user();
+        $delete =user::whereId(auth()->id())->delete([
+            
+        ]);
+        // if(Hash::check($request->input('password'),$user->password)){
+        //     $user->delete();
+        
+        // Auth::logout(); //logout the user after deletion
+        // return redirect('/')->with('success','Account deleted successfully');
+        // }
+        // return redirect()->back()->with('error','PAssword verification failed. Please try again.');
 
         // $user=User::find($id);
         // $user->delete();
         // return redirect()->route('login')->with('Status','Account Deleted Successfully.');
     }
-
 }

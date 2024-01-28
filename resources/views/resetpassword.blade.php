@@ -1,7 +1,7 @@
 $<!doctype html>
 <html lang="en">
   <head>
-    <title>Delete Account </title>
+    <title>Reset Account </title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -11,13 +11,13 @@ $<!doctype html>
   </head>
   <body class="body">
     <div class="container">
-    <form action="{{ route('delete.account') }}" method="post" class="form">
+    <form action="{{ route('password.email') }}" method="post" class="form">
         @csrf
     
-        <!-- Confirm  Password -->
-        <input type="password" name="password" placeholder="Enter Password" required>
+        <!-- reset password-->
+        <input type="email" name="email" placeholder="Enter your email" required>
     
-        <button type="submit">Delete Account </button>
+        <button type="submit">Reset </button>
     </form>
     <div>
     

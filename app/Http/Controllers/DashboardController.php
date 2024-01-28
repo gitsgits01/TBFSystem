@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Redirect;
 use App\Http\Requests;
 use App\Models\Post;
+use App\Models\User;
 use Symfony\Component\HttpKernel\Controller\ArgumentResolver\RequestPayloadValueResolver;
 
 class DashboardController extends Controller
@@ -39,12 +40,11 @@ class DashboardController extends Controller
 
         $post = new Post;
         $post->title = $request->title;
-        $post->description = $request->description;
         $post->user_id=$userid;
         $post->user_name=$username;
-        $image=$post->image;
-        if($request['image']){
-                    $imagename=time().'.'.$request['image']->getClientOriginalExtension();
+        $image=$request->image;
+        if($image){
+                    $imagename=time().'.'.$image->getClientOriginalExtension();
                     $request->image->move('postimage',$imagename);
                     $post->image= $imagename;
                 } 
