@@ -33,6 +33,7 @@ body{
 
 #left-sidebar {
     left: 0;
+    overflow:hidden;
 }
 
 #right-sidebar {
@@ -77,6 +78,7 @@ body{
         background-color: #1d3557;
         color:whitesmoke;
         padding:5px;
+        margin-left:-5px;
         margin-bottom: 50px;
 }
 .nav-list .item-list .items{
@@ -164,6 +166,9 @@ button{
   }
   .dropdown p{
     margin-bottom: -2px;
+  }
+  .dropdown p:hover{
+    color:whitesmoke;
   }
   .dropdown p i{
     margin-right: 5px;
