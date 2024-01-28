@@ -9,45 +9,34 @@
     background-color: #1d3557;
 }
 
-/* Login container */
-.container {
+/* container */
+.login-container {
     border:2px solid whitesmoke;
     width: 300px;
     /* background-color: #292072; */
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    padding: 20px;
+    padding: 10px;
 }
 
-/* Form styles */
-.form p {
-    text-align: center;
-    margin-bottom: 20px;
-    color:whitesmoke;
-}
-
-
-.form input[type="password"],
-.form button {
+.login-form input[type="email"],
+.login-form input[type="password"],
+.login-form button {
     width: 100%;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
+    margin-top: 10px;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 3px;
 }
 
-.form button {
+.login-form button {
     background-color: #007bff;
     color: #fff;
     border: none;
     cursor: pointer;
 }
 
-.form button:hover {
+.login-form button:hover {
     background-color: #0056b3;
-}
-.form button a{
-    text-decoration: none;
-    color:#fff;
-
 }
