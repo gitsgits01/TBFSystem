@@ -36,10 +36,25 @@ class UserController extends Controller
         return redirect()->route('login')->with('success', 'Password changed successfully!');
     }
 
-    public function delete($id){
-        $user=User::find($id);
-        $user->delete();
-        return redirect()->route('login')->with('Status','Account Deleted Successfully.');
+    public function confirm_deletion(){
+        return view('confirm_deletion');
+    }
+    public function delete(Request $request){
+        $request->validate([
+            'password' => 'required',
+        ]);
+        $user=Auth::user();
+        if(Hash::check($request->input('password'),$user->password)){
+            $user->delete();
+        
+        Auth::logout(); //logout the user after deletion
+        return redirect('/')->with('success','Account deleted successfully');
+        }
+        return redirect()->back->with('error','PAssword verification failed. Please try again.');
+
+        // $user=User::find($id);
+        // $user->delete();
+        // return redirect()->route('login')->with('Status','Account Deleted Successfully.');
     }
 
 }

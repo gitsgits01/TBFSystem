@@ -70,9 +70,14 @@ class DashboardController extends Controller
         
         return redirect()->route('dashboard')->with('success','Post Created');
 
-
+        
         // return view('create_post');
     }
+    public function chatify(){
+        return view('chatify');
+    }
     
-    
+    public function userprofile(){
+        return view('userprofile');
+    }
 }

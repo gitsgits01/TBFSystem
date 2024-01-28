@@ -16,12 +16,7 @@ class ScheduleController extends Controller
         $user=Auth::user();
         $userid=$user->id;
         $username=$user->name;
-        // if(Auth::check()){
-        //     $request->validate([
-        //         'user_id'=> 'required|exists:users,id',
-        //         'user_name'=> 'required|exists:users,name',
-        //     ]);
-        //}
+       
         $posts=Schedule::create([
             'location'=>$request['location'],
             'destination'=>$request['destination'],
@@ -29,8 +24,7 @@ class ScheduleController extends Controller
             'days'=>$request['days'],
             'user_id'=> $userid,
             'user_name'=>$username,
-            // $request->user_id($userid),
-            // $request->user_name($username),
+           
         ]);
         //$user=new User($request->all());
           $posts->save();

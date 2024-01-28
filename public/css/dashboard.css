@@ -33,6 +33,21 @@ body{
     height:100%;
     overflow: hidden;
 }
+#right-sidebar .userprofile
+{
+    width:inherit;
+    background-color: #1d3557;
+
+}
+#right-sidebar .userprofile a{
+    color:whitesmoke;
+    text-decoration: none;
+    font-size: 30px;
+    padding:5px;
+    font-weight: bold;
+    font-family: 'Courier New', Courier, monospace;
+   
+}
 #right-sidebar .profile a{
     text-decoration: none;
     color:#1d3557;
@@ -71,6 +86,7 @@ body{
         background-color: #1d3557;
         color:whitesmoke;
     }
+
 #main-content {
     margin-left: 300px; /* Width of the left sidebar */
     margin-right: 200px; /* Width of the right sidebar */
@@ -113,7 +129,62 @@ button{
     box-sizing: border-box;
 }
 
-
-
-
-
+/* Dropdown Button */
+.dropbtn {
+    background-color: whitesmoke;
+    color: black;
+    padding: 10px;
+    font-size: 20px;
+    border: none;
+    cursor: pointer;
+    row-gap: 10px;
+       
+      
+       display: flex;
+       align-items: center;
+       box-sizing: border-box;
+  }
+  
+  /* Dropdown button on hover & focus */
+  .dropbtn:hover, .dropbtn:focus {
+    background-color:#1d3557;
+  }
+  
+  /* The container <div> - needed to position the dropdown content */
+  .dropdown {
+    position: relative;
+    display: inline;
+  }
+  .dropdown p{
+    margin-bottom: -2px;
+  }
+  .dropdown p i{
+    margin-right: 5px;
+  }
+  
+  /* Dropdown Content (Hidden by Default) */
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+  /* Links inside the dropdown */
+  .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  /* Change color of dropdown links on hover */
+  .dropdown-content a:hover {background-color: #1d3557;
+color: whitesmoke;
+text-decoration: none;}
+  
+  /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+  .show {display:block;}
+  

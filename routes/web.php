@@ -48,6 +48,7 @@ Route::group(['middleware'=>'auth'],function(){
     Route::get('/Schedules',[ScheduleController::class,'show'])->name('show');
 
     Route::get('/dashboard',DashboardController::class.'@__invoke')->name('dashboard');
+    Route::get('/dashboard/userprofile',[DashboardController::class,'userprofile'])->name('userprofile');
 
     Route::get('/logout', [LoginController::class,'logout'])->name('logout');
     //Route::get('/create_post', [DashBoardController::class,'post'] );
@@ -55,12 +56,15 @@ Route::group(['middleware'=>'auth'],function(){
 
     Route::get('/changepassword',[UserController::class,'changePassword'] )->name('changepassword');
     Route::post('/updatepassword', [UserController::class,'updatePassword'])->name('updatepassword');
-   Route::get('/delete/(id)',[UserController::class,'delete'])->name('delete.account');
+
+   Route::get('/confirm-deletion',[UserController::class,'confirm_deletion'])->name('confirm_deletion');
+   Route::post('/account/delete',[UserController::class,'delete'])->name('delete.account');
 });
 Route::middleware(['auth'])->group(function () {
     
     Route::post('/send-message',[ChatController::class, 'sendMessage']);
     Route::get('/dashboard',DashboardController::class.'@__invoke')->name('dashboard');
+    // Route::get('/chatify',DashboardController::class.'@chatify')->name('Chatify');
 
     // Route::get('/message', [MessageController::class, 'index'])->name('message.index');
     // Route::get('/message/{userId}', [MessageController::class, 'show'])->name('message.show');

@@ -1,7 +1,7 @@
 $<!doctype html>
 <html lang="en">
   <head>
-    <title>Change Password</title>
+    <title>Delete Account </title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -11,19 +11,13 @@ $<!doctype html>
   </head>
   <body class="body">
     <div class="container">
-    <form action="{{ route('updatepassword') }}" method="post" class="form">
+    <form action="{{ route('delete.account') }}" method="post" class="form">
         @csrf
     
-        <!-- Current Password -->
-        <input type="password" name="current_password" placeholder="Current Password" required>
+        <!-- Confirm  Password -->
+        <input type="password" name="password" placeholder="Confirm  Password "required>
     
-        <!-- New Password -->
-        <input type="password" name="new_password" placeholder= " New Password" required>
-    
-        <!-- Confirm New Password -->
-        <input type="password" name="confirm_password" placeholder="Confirm New Password "required>
-    
-        <button type="submit">Change Password</button>
+        <button type="submit">Delete Account </button>
     </form>
     <div>
     
