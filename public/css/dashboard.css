@@ -22,6 +22,14 @@ body{
     box-sizing: border-box;
     overflow-y: auto;
 }
+.item-list .items a{
+    color:black;
+
+}
+.item-list .items a:hover{
+    color:White;
+    text-decoration: none;
+}
 
 #left-sidebar {
     left: 0;
@@ -46,8 +54,8 @@ body{
     position:relative;
     
     
-    }
-    .nav-list #travel{
+}
+.nav-list #travel{
         font-family: 'Courier New', Courier, monospace;
         font-weight: bold;
         font-size:25px;
@@ -55,22 +63,22 @@ body{
         color:whitesmoke;
         padding:5px;
         margin-bottom: 50px;
-    }
-    .nav-list .item-list .items{
-       row-gap: 10px;
-       font-size: 20px;
-       padding: 10px;
-       display: flex;
-       align-items: center;
-       box-sizing: border-box;
-    }
-    .items i{
-        margin-right: 10px;
-    }
-    .nav-list .item-list .items:hover{
-        background-color: #1d3557;
-        color:whitesmoke;
-    }
+}
+.nav-list .item-list .items{
+    row-gap: 10px;
+    font-size: 20px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+}
+.items i{
+    margin-right: 10px;
+}
+.nav-list .item-list .items:hover{
+    background-color: #1d3557;
+    color:whitesmoke;
+}
 #main-content {
     margin-left: 300px; /* Width of the left sidebar */
     margin-right: 200px; /* Width of the right sidebar */

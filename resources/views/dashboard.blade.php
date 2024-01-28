@@ -50,7 +50,7 @@
         @csrf
         <textarea name="title" placeholder="What's on your mind?"></textarea>
         <input type="file" name="image">
-        <button  type="submit"  class="btn btn-lg btn-success" style="width: 15px"> Post </button>
+        <input  type="submit"  class="btn btn-success" value="POST"> 
         {{-- <div class="create-post">
             <label>Title</label>
             <input type="text" name="title">

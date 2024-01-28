@@ -53,7 +53,7 @@
             </span>
 
         <button class="elements" type="submit"><a href="{{route('dashboard')}}">Cancel</a></button>
-        <button class="elements" type="submit">Post</button>
+        <button class="elements" type="submit">Schedule</button>
         
     </form>
     </div>
