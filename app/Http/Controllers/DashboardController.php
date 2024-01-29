@@ -43,11 +43,15 @@ class DashboardController extends Controller
         $post->title = $request->title;
         $post->user_id=$userid;
         $post->user_name=$username;
-        $image=$request->image;
-        $name=$image->getClientOriginalName();
-        $image->storeAs('public/uploadedpost',$name);
+        // $image=$request->image;
+        // $name=$image->getClientOriginalName();
+        // $image->storeAs('public/uploadedpost',$name);
+        // $post->image = $name;
 
-        $post->image = $name;
+        $image=time().'.'.$request->image->extension();
+        $request->image->move(public_path('uploadedpost'),$image);
+        $path="/uploadedpost/".$image;
+        $post->image=$path;
         $post->save();
         return redirect()->route('dashboard')->with('success','Post Created');
     }

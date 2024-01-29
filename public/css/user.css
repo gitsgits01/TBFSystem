@@ -14,7 +14,7 @@ body {
     position: fixed;
     top: 0;
     height: 100vh;
-    width: 300px;
+    width: 250px;
     background-color:#1d3557;
     padding: 20px;
     box-sizing: border-box;
@@ -34,9 +34,9 @@ body {
     color: whitesmoke;
     text-decoration: none;
 }
-.profile-container i{
+/* .profile-container i{
     font-size: 50px;
-}
+} */
 
 /* .profile-picture {
     width: 100%;
@@ -64,29 +64,91 @@ body {
 .tdata{
     display: flex;
     flex-direction: column;
+    height:100vh;
+
 }
 
 .timeline{
-    padding: 30px;
-    text-align: center;
+    box-shadow: 0 0 5px rgba(36, 33, 33, 0.5);
+    margin-left: 20px;
+    margin-bottom: 20px;
+    padding-top:10px;
+    padding-left: 10px;
+    float:left;
+    /* text-align: center; */
 }
-.user-name{
-    font-size: 20px;
+.username{
+    font-size: 16px;
     font-weight: bold;
-    padding:10px
+    margin-bottom: 5px;
+    /* position: relative;
+    display: inline; */
 }
-.user-title{
-    font-size:20px;
-    padding:10px;
+/* Dropdown button on hover & focus */
+.dropbtn:hover, .dropbtn:focus {
+    background-color:#1d3557;
+}
+  
+/* The container <div> - needed to position the dropdown content */
+/* .dropdown {
+    position: relative;
+    display: inline;
+} */
+.username p{
+    margin-bottom: -2px;
+}
+.username p:hover{
+    color:whitesmoke;
+}
+.timeline i{
+    float:right;
+    padding:20px;
+}
+.timeline i:hover{
+    color:whitesmoke;
+}
+  
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+  
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+  
+  /* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #1d3557;
+    color: whitesmoke;
+    text-decoration: none;
+}
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show {display:block;}
+  
+
+
+
+.post-title{
+    font-size:16px;
 }
 .timeline div{
+
     height: max-content;
-    width: max-content;
+    /* width: max-content; */
 }
 .timeline  img{
     justify-content: center;
     margin-bottom: 20px; 
-    height:auto;
+    height:400px;
     width:auto;
-    src:"/postimage/";
+    src:"/uploadedpost/";
 }
