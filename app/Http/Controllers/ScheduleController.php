@@ -31,9 +31,5 @@ class ScheduleController extends Controller
     return redirect()->route('dashboard')->with('success','Post Created');
        
     }
-    public function show(){
-        $posts=Schedule::latest()->get();
-        return view('scheduleshow',['posts'=>$posts]);
 
-}
 }

@@ -20,26 +20,50 @@ class UserController extends Controller
             'new_password' => 'required|string|min:8|confirmed',
             'confirm_password'=>'required|same:new_password',
         ]);
-    
-        $user = Auth::user();
-        //$user = User::auth();
-        // Verify current password
-        if (!Hash::check($request->current_password,auth()-> $user->password)) {
-            return back()->withErrors(['current_password' => 'The provided current password is incorrect.']);
+        $current_password=Hash::check($request->current_password,auth()->user()->password);
+        if($current_password){
+        User::findOrFail(Auth::user()->id)->update([
+            'password'=> Hash::make($request->password),
+        ]);
+        return redirect()->route('login')->with('success','Password Changed');
+    }else{
+        return redirect()->back()->with('error','Current Password doesnot match with the old password');
+
+
+
+
+
+        // $user = Auth::user();
+        // // Verify current password
+        // if (Hash::check($request->current_password,auth()-> $user->password)) {
+
+        // $update=user::whereId(auth()->id())->update([
+        //     'password'=>Hash::make($request->new_password)]);
+        //     if( $update ){
+        //         return redirect()->back()->with('success','Password changed successfully');
+        //     }
+        //     return redirect()->back()->with('error','Password Changed failed');
+        
+        //Update password
+       
+        // if (Hash::check($request->current_password,auth()-> $user->password)) {
+        
+        //     auth()->$user->update([
+        //         'password' => Hash::make($request->input('new_password')),
+        //     ]);
+        //     return redirect()->route('login')->with('success', 'Password changed successfully!');
+
+
+        // }else{
+        //     return redirect()->back()->withErrors(['error' => 'The provided current password is incorrect.']);
+
+        // }
+
         }
-        $update=user::whereId(auth()->id())->update([
-            'password'=>Hash::make($request->new_password)]);
-            if( $update ){
-                return redirect()->back()->with('success','Password changed successfully');
-            }
-            return redirect()->back()->with('error','Password Changed failed');
-        // Update password
-        // $user->update([
-        //     'password' => Hash::make($request->input('new_password')),
-        // ]);
-        //$user->save();
-        // return redirect()->route('login')->with('success', 'Password changed successfully!');
     }
+
+        
+
 
     public function confirm_deletion(){
         return view('confirm_deletion');
@@ -66,3 +90,4 @@ class UserController extends Controller
         // return redirect()->route('login')->with('Status','Account Deleted Successfully.');
     }
 }
+

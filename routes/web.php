@@ -10,6 +10,7 @@ use App\Http\Controllers\UserController;
 use Illuminate\Auth\Events\Login;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 use app\Http\Controllers\Auth;
+use App\Http\Controllers\PusherController;
 use App\Http\Controllers\ScheduleController;
 use  App\Http\Middleware;
 use Illuminate\Http\Request;
@@ -47,7 +48,7 @@ Route::group(['middleware'=>'auth'],function(){
     Route::get('/schedule', [ScheduleController::class,'schedule'])->name('schedule');
     Route::get('/schedule/create',[ScheduleController::class,'create'])->name('schedule.create');
     Route::post('/schedule',[ScheduleController::class,'store'])->name('schedule.store');
-    Route::get('/Schedules',[ScheduleController::class,'show'])->name('show');
+    // Route::get('/Schedules',[ScheduleController::class,'s'])->name('show');
 
     Route::get('/dashboard',DashboardController::class.'@__invoke')->name('dashboard');
     Route::get('/dashboard/userprofile',[DashboardController::class,'userprofile'])->name('userprofile');
@@ -61,12 +62,14 @@ Route::group(['middleware'=>'auth'],function(){
 
    Route::get('/confirm-deletion',[UserController::class,'confirm_deletion'])->name('confirm_deletion');
    Route::post('/account/delete',[UserController::class,'delete'])->name('delete.account');
+
+   
 });
 Route::middleware(['auth'])->group(function () {
     
     Route::post('/send-message',[ChatController::class, 'sendMessage']);
     Route::get('/dashboard',DashboardController::class.'@__invoke')->name('dashboard');
-    // Route::get('/chatify',DashboardController::class.'@chatify')->name('Chatify');
+    //Route::get('/chatify',PusherController::class.'broadcast')->name('chatify');
 
     // Route::get('/message', [MessageController::class, 'index'])->name('message.index');
     // Route::get('/message/{userId}', [MessageController::class, 'show'])->name('message.show');

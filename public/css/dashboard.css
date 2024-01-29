@@ -1,6 +1,7 @@
 *{
     margin:0;
     padding:0;
+    box-sizing: border-box;
 }
 body{
     margin:0;
@@ -14,7 +15,7 @@ body{
 }
 #left-sidebar, #right-sidebar {
     position: fixed;
-    top: 0;
+    top:0;
     height: 100vh;
     width: 300px;
     background-color:whitesmoke;
@@ -96,48 +97,6 @@ body{
     background-color: #1d3557;
     color:whitesmoke;
 }
-#main-content {
-    margin-left: 300px; /* Width of the left sidebar */
-    margin-right: 200px; /* Width of the right sidebar */
-    padding: 20px;
-    box-sizing: border-box;
-    overflow-y: auto;
-}
-.hello p{
-    text-align: left;
-    vertical-align: top;
-    margin-right: 10px;
-}
-#main-content{
-    width: calc(100% -500px);
-}
-.hello{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-.hello p{
-    margin-right: 5px;
-}
-.hello form{
-    display: flex;
-    align-items: center;
-}
-.hello input[type="text"]{
-    height: 40px;
-    width: 400px;
-    padding: 5px;
-    margin-right: 5px;
-    margin-top: -10px;
-    box-sizing: border-box;
-}
-button{
-    height: 40px;
-    width:30px;
-    margin-right: 5px;
-    box-sizing: border-box;
-}
-
 /* Dropdown Button */
 .dropbtn {
     background-color: whitesmoke;
@@ -200,3 +159,35 @@ text-decoration: none;}
   /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
   .show {display:block;}
   
+  .main-container {
+    overflow: hidden;
+    background-color: #e9e9e9;
+  }
+  .main-container .search-container {
+    float: right;
+    margin-top: 12px;
+    position: fixed;
+  }
+  
+  .main-container input[type=text] {
+    padding: 6px;
+    margin-top: 8px;
+    font-size: 17px;
+    height:40px;
+    width:400px;
+    
+  }
+  
+  .main-container .search-container button {
+    float: right;
+    height:40px;
+    width:40px;
+    padding: 6px 10px;
+    margin-top: 8px;
+    /* margin-right: 16px; */
+    /* background: #ddd; */
+    font-size: 17px;
+    position: fixed;
+    cursor: pointer;
+  }
+

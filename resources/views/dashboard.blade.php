@@ -23,7 +23,7 @@
           
             <div class="items"><a href="{{route('dashboard')}}"><i class="fa-solid fa-braille"></i>Dashboard</a></div>
             <div class="items"><a href="{{route('schedule')}}"><i class="fa-regular fa-calendar-days"></i>Schedule</a></div>
-            <div class="items"><i class="fa-solid fa-message fa-beat"></i>Message</div>
+            <div class="items"><a href="{{route('chatify')}}"><i class="fa-solid fa-message fa-beat"></i>Message</a></div>
 
             <div class="dropdown"> 
               <p onclick="myFunction()" class="dropbtn" value="Settings"><i class="fa-solid fa-gears"></i>Settings</p>
@@ -39,16 +39,14 @@
         </div>
       </div>
     </div>
-    <div id="main-content">
-      <div class="hello">
-        @if(Auth::check())
-        <p>Welcome</p>
-        @endif
-        <form action="" method="get">
-          <input type="text" name="search" placeholder="Search...">
-          <button type="button"><i class="fa-solid fa-magnifying-glass"></i></button>
+
+    <div class="main-container">
+      <div class="search-container">
+        <form action="{{route('search')}}">
+          <input type="text" placeholder="Search.." name="search">
+          <button type="submit"><i class="fa fa-search"></i></button>
+        </form>
       </div>
-      
     </div>
 
     <div id="right-sidebar">

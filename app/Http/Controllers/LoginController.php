@@ -41,10 +41,10 @@ class LoginController extends Controller
         // if(Session::has('email')){
         //     Session::pull('email');
         // }
-        Session()->flush();
+       // Session()->flush();
         Auth::logout();
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
+        // $request->session()->invalidate();
+        // $request->session()->regenerateToken();
 
         return redirect('login');
     }
