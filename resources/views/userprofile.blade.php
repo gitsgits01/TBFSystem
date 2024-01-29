@@ -24,7 +24,28 @@
 
             @endif
         </div>
+    </div>
+    <div class="tdata">
+     @foreach($data as $data)
+      <div class="timeline">
+        <p class="user-name">{{Auth::user()->name}}&nbsp;created a post.</p>
+        <p class="post-title">{{$data->title}}</p>
+        <div class="post-img"><img src="{{asset('storage/uploadedpost/'.$data->image)}}"></div>
       </div>
+      @endforeach
+      @foreach($schedule as $schedule)
+      <div class="timeline">
+        <p class="user-name">{{Auth::user()->name}}&nbsp;Scheduled a travel.</p>
+        <p class="location">Location:{{$schedule->location}}</p>
+        <p class="destination">Destination:{{$schedule->destination}}</p>
+        <p class="date">Date:{{$schedule->date}}</p>
+        <p class="days">Number of Days:{{$schedule->days}}</p>
+
+      </div>
+      @endforeach
+    </div>
+    
+  
     
         {{-- <div class="additional-info" id="additionalInfo">
             <p>Bio: </p>

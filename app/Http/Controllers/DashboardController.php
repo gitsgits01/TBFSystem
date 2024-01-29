@@ -1,11 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Schedule;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Redirect;
 use App\Http\Requests;
 use App\Models\Post;
+use App\Models\User;
 use Symfony\Component\HttpKernel\Controller\ArgumentResolver\RequestPayloadValueResolver;
 
 class DashboardController extends Controller
@@ -39,45 +41,38 @@ class DashboardController extends Controller
 
         $post = new Post;
         $post->title = $request->title;
-        $post->description = $request->description;
         $post->user_id=$userid;
         $post->user_name=$username;
-        $image=$post->image;
-        if($request['image']){
-                    $imagename=time().'.'.$request['image']->getClientOriginalExtension();
-                    $request->image->move('postimage',$imagename);
-                    $post->image= $imagename;
-                } 
-        // $post=Post::create([
-        //     'title'=>$request['title'],
-        //     'description'=>$request['description'],
-        //     'user_id'=>$userid,
-        //    'user_name'=>$username,
+        $image=$request->image;
+        $name=$image->getClientOriginalName();
+        $image->storeAs('public/uploadedpost',$name);
 
-        //     'image'=>$request['image']
-        //     if($request['image']){
-        //         $imagename=time().'.'.$request['image']->getClientOriginalExtension();
-        //         $request->image->move('postimage',$imagename);
-        //         $post->image= $imagename;
-        //     } 
-           
-        //     $request->validate([
-        //         'image'=>['required','jpeg','png'],
-        //     ])
-        //     ]);
+        $post->image = $name;
         $post->save();
-
-        
         return redirect()->route('dashboard')->with('success','Post Created');
-
-        
-        // return view('create_post');
     }
     public function chatify(){
         return view('chatify');
     }
-    
+
     public function userprofile(){
-        return view('userprofile');
+        $user=Auth::user();
+        $userid=$user->id;
+        $username=$user->name;
+        $data=Post::where('user_id','=',$userid)->get();
+        $schedule=Schedule::where('user_id','=',$userid)->get();
+        return view('userprofile',compact('data','schedule'));
+
     }
+    
+     public function search(Request $request){
+        $search=$request->search;
+        $posts=Post::where(function($query) use($search){
+
+        $query->where('title','like','%'.$search.'%')
+        ->orwhere('description','like','%'.$search.'%')->orwhere('user_name','like','%'.$search.'%');
+    });
+    return view('dashboard',compact('posts','search'));
+}
+
 }

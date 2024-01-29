@@ -11,6 +11,13 @@ $<!doctype html>
   </head>
   <body class="body">
     <div class="login-container">
+      @if(Session::has('error'))
+         <p class="text-danger">{{Session::get('error')}}</p>
+       @endif
+       @if(Session::has('success'))
+          <p class="text-success">{{Session::get('success')}}</p>
+        @endif
+
     <form action="{{ route('updatepassword') }}" method="post" class="login-form">
         @csrf
     

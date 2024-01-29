@@ -1,7 +1,7 @@
 $<!doctype html>
 <html lang="en">
   <head>
-    <title>Delete Account </title>
+    <title>Reset Account </title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -10,14 +10,14 @@ $<!doctype html>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   </head>
   <body class="body">
-    <div class="login-container">
-    <form action="{{ route('delete.account') }}" method="post" class="login-form">
+    <div class="container">
+    <form action="{{ route('password.email') }}" method="post" class="form">
         @csrf
     
-        <!-- Confirm  Password -->
-        <input type="password" name="password" placeholder="Enter Password" required>
+        <!-- reset password-->
+        <input type="email" name="email" placeholder="Enter your email" required>
     
-        <button type="submit">Delete Account </button>
+        <button type="submit">Reset </button>
     </form>
     <div>
     

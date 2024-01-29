@@ -31,6 +31,8 @@
                 <a href="{{route('changepassword')}}">Change Password</a>
                 <a href="{{route('confirm_deletion')}}">Delete Account</a>
                 <a href="{{route('userprofile')}}">Edit Profile</a>
+                <a href="{{route('password.request')}}">Reset Password</a>
+
               </div>
             </div>
             <div class="items"><a href="#"><i class="fa-solid fa-bell"></i>Notification</a></div>
@@ -39,16 +41,14 @@
         </div>
       </div>
     </div>
-    <div id="main-content">
-      <div class="hello">
-        @if(Auth::check())
-        <p>Welcome</p>
-        @endif
-        <form action="" method="get">
-          <input type="text" name="search" placeholder="Search...">
-          <button type="button"><i class="fa-solid fa-magnifying-glass"></i></button>
+
+    <div class="main-container">
+      <div class="search-container">
+        <form action="{{route('search')}}">
+          <input type="text" placeholder="Search.." name="search">
+          <button type="submit"><i class="fa fa-search"></i></button>
+        </form>
       </div>
-      
     </div>
 
     <div id="right-sidebar">
@@ -59,7 +59,7 @@
      </div>
         <div class="profile">
        <h4>Create Post</h4>
-       <form  action="{{route('create_post')}}" method="post">
+       <form  action="{{route('create_post')}}" method="post" enctype="multipart/form-data">
         @csrf
         <textarea name="title" placeholder="What's on your mind?"></textarea>
         <input type="file" name="image">
