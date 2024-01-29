@@ -23,7 +23,7 @@
           
             <div class="items"><a href="{{route('dashboard')}}"><i class="fa-solid fa-braille"></i>Dashboard</a></div>
             <div class="items"><a href="{{route('schedule')}}"><i class="fa-regular fa-calendar-days"></i>Schedule</a></div>
-            <div class="items"><i class="fa-solid fa-message fa-beat"></i>Message</div>
+            <div class="items"><a href="{{route('chatify')}}"><i class="fa-solid fa-message fa-beat"></i>Message</a></div>
 
             <div class="dropdown"> 
               <p onclick="myFunction()" class="dropbtn" value="Settings"><i class="fa-solid fa-gears"></i>Settings</p>
@@ -33,6 +33,8 @@
                 <a href="{{route('userprofile')}}">Edit Profile</a>
               </div>
             </div>
+            <div class="items"><a href="#"><i class="fa-solid fa-bell"></i>Notification</a></div>
+
             <div class="items"><a href="{{route('logout')}}"><i class="fa-solid fa-right-from-bracket"></i>Logout</a></div>
         </div>
       </div>
