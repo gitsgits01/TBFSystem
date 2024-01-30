@@ -14,7 +14,7 @@
   <body>
     
     <div class="profile-container">
-        <i class="fa-solid fa-user"></i>
+        {{-- <i class="fa-solid fa-user"></i> --}}
         <div class="user-details">
             @if(Auth::check())
             <p>{{Auth::user()->name}}</p>
@@ -28,14 +28,22 @@
     <div class="tdata">
      @foreach($data as $data)
       <div class="timeline">
-        <p class="user-name">{{Auth::user()->name}}&nbsp;created a post.</p>
+        <p class="username">{{Auth::user()->name}}&nbsp;created a post.<i class="fa-solid fa-circle-exclamation"></i>
+          {{-- <div class="dropdown"> 
+            <p onclick="myFunction()" class="dropbtn"><i class="fa-solid fa-circle-exclamation"></i></p>
+            <div id="myDropdown" class="dropdown-content">
+              <a href="#">Delete Post</a>
+              
+            </div>
+          </div> --}}
+        </p>
         <p class="post-title">{{$data->title}}</p>
-        <div class="post-img"><img src="{{asset('storage/uploadedpost/'.$data->image)}}"></div>
+        <div class="post-img"><img src="{{asset($data->image)}}"></div>
       </div>
       @endforeach
       @foreach($schedule as $schedule)
       <div class="timeline">
-        <p class="user-name">{{Auth::user()->name}}&nbsp;Scheduled a travel.</p>
+        <p class="username">{{Auth::user()->name}}&nbsp;Scheduled a travel.<i class="fa-solid fa-circle-exclamation"></i></p>
         <p class="location">Location:{{$schedule->location}}</p>
         <p class="destination">Destination:{{$schedule->destination}}</p>
         <p class="date">Date:{{$schedule->date}}</p>
@@ -55,8 +63,8 @@
         <textarea placeholder="whats on your mind"></textarea>
         <button class="toggle-button" onclick="toggleAdditionalInfo()">Show Additional Info</button> --}}
     
-    <script src="{{asset('js/aboutus.js')}}">
-    </script>
+        <script src="{{asset('js/dashboard.js')}}"></script>
+
     
   </body>
 </html>

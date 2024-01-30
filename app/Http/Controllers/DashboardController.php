@@ -49,11 +49,15 @@ class DashboardController extends Controller
         $post->title = $request->title;
         $post->user_id=$userid;
         $post->user_name=$username;
-        $image=$request->image;
-        $name=$image->getClientOriginalName();
-        $image->storeAs('public/uploadedpost',$name);
+        // $image=$request->image;
+        // $name=$image->getClientOriginalName();
+        // $image->storeAs('public/uploadedpost',$name);
+        // $post->image = $name;
 
-        $post->image = $name;
+        $image=time().'.'.$request->image->extension();
+        $request->image->move(public_path('uploadedpost'),$image);
+        $path="/uploadedpost/".$image;
+        $post->image=$path;
         $post->save();
         return redirect()->route('dashboard')->with('success','Post Created');
     }
@@ -72,14 +76,19 @@ class DashboardController extends Controller
     }
 
     
-     public function search(Request $request){
-        $search=$request->search;
-        $posts=Post::where(function($query) use($search){
-
-        $query->where('title','like','%'.$search.'%')
-        ->orwhere('description','like','%'.$search.'%')->orwhere('user_name','like','%'.$search.'%');
-    });
-    return view('dashboard',compact('posts','search'));
+    public function search(Request $requeest)
+    {
+        $search=$request['search'] ?? "";
+        if($search !=""){
+            $user=User::where('name','=',$search)->get();
+        }
+        else{
+            //return redirect()->back()->with('search','not found');
+            $user=User::all();
+        }
+        // $data=compact('user','search');
+        return view('search',compact('user','search'));
+    }
 }
 
-}
+

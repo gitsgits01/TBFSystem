@@ -35,6 +35,8 @@
 
               </div>
             </div>
+            <div class="items"><a href="#"><i class="fa-solid fa-bell"></i>Notification</a></div>
+
             <div class="items"><a href="{{route('logout')}}"><i class="fa-solid fa-right-from-bracket"></i>Logout</a></div>
         </div>
       </div>
@@ -42,8 +44,8 @@
 
     <div class="main-container">
       <div class="search-container">
-        <form action="{{route('search')}}">
-          <input type="text" placeholder="Search.." name="search">
+        <form action="{{route('search')}}" method="GET">
+          <input type="text" placeholder="Search.." name="search" >
           <button type="submit"><i class="fa fa-search"></i></button>
         </form>
       </div>

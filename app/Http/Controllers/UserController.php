@@ -20,7 +20,7 @@ class UserController extends Controller
             'new_password' => 'required|string|min:8|confirmed',
             'confirm_password'=>'required|same:new_password',
         ]);
-        $current_password=Hash::check($request->current_password,auth()->user()->password);
+    $current_password=Hash::check($request->current_password,auth()->user()->password);
         if($current_password){
         User::findOrFail(Auth::user()->id)->update([
             'password'=> Hash::make($request->password),
@@ -52,7 +52,7 @@ class UserController extends Controller
         //         'password' => Hash::make($request->input('new_password')),
         //     ]);
         //     return redirect()->route('login')->with('success', 'Password changed successfully!');
-
+    
 
         // }else{
         //     return redirect()->back()->withErrors(['error' => 'The provided current password is incorrect.']);
@@ -72,7 +72,7 @@ class UserController extends Controller
         $request->validate([
             'password' => 'required',
         ]);
-        
+
         $user=Auth::user();
         $delete =user::whereId(auth()->id())->delete([
             
@@ -80,5 +80,9 @@ class UserController extends Controller
         ]);
         return redirect()->route('cancel');
     }
+    // public function profile(User $user)
+    // {
+    //     return view('userprofile', compact('user'));
+    // }
 }
 
