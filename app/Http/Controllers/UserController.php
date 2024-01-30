@@ -76,18 +76,9 @@ class UserController extends Controller
         $user=Auth::user();
         $delete =user::whereId(auth()->id())->delete([
             
+            
         ]);
-        // if(Hash::check($request->input('password'),$user->password)){
-        //     $user->delete();
-        
-        // Auth::logout(); //logout the user after deletion
-        // return redirect('/')->with('success','Account deleted successfully');
-        // }
-        // return redirect()->back()->with('error','PAssword verification failed. Please try again.');
-
-        // $user=User::find($id);
-        // $user->delete();
-        // return redirect()->route('login')->with('Status','Account Deleted Successfully.');
+        return redirect()->route('cancel');
     }
 }
 

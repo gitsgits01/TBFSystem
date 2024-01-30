@@ -18,7 +18,13 @@ class DashboardController extends Controller
     {
         if(Auth::check())
         {
-            return view('dashboard');
+            $user=Auth::user();
+            $userid=$user->id;
+            $username=$user->name;
+            $data=Post::where('user_id','=',$userid)->get();
+            $schedule=Schedule::where('user_id','=',$userid)->get();
+            return view('dashboard',compact('data','schedule'));
+            // return view('dashboard');
         }
         else{
             return redirect()->route('login')->withSuccess('Login first');
@@ -64,6 +70,7 @@ class DashboardController extends Controller
         return view('userprofile',compact('data','schedule'));
 
     }
+
     
      public function search(Request $request){
         $search=$request->search;

@@ -40,6 +40,7 @@ Route::get('/signup',[SignupController::class,'form'])->name('signup');
 Route::post('/signup',[SignupController::class,'store'])->name('signup.store');
 Route::get('/login',[LoginController::class,'form'])->name('login');
 Route::post('/login',[LoginController::class, 'login'])->name('login.store');
+
 });
 
 

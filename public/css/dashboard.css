@@ -160,10 +160,11 @@ text-decoration: none;}
   .show {display:block;}
   
   .main-container {
-    overflow: hidden;
+    /* overflow: hidden; */
     background-color: #e9e9e9;
   }
   .main-container .search-container {
+    position:fixed;
     float: right;
     margin-top: 12px;
     position: fixed;
@@ -190,4 +191,5 @@ text-decoration: none;}
     position: fixed;
     cursor: pointer;
   }
+  
 
