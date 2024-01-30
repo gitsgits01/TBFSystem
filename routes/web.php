@@ -15,6 +15,8 @@ use App\Http\Controllers\ScheduleController;
 use  App\Http\Middleware;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Password;
+use Illuminate\Support\Facades\Input;
+use App\Models\User;
 // use App\Http\Controllers\IndexController;
 /*
 |--------------------------------------------------------------------------
@@ -77,6 +79,10 @@ Route::middleware(['auth'])->group(function () {
     
 
 });
+
+Route::get('/search',[DashboardController::class,'search'])->name('search');
+Route::get('/user/{user}', [UserController::class, 'profile'])->name('profile');
+
 //Route::get('/reset', [UserController::class,'resetPassword'])->name('reset');
 
 //Reset the password

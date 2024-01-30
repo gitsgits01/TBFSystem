@@ -163,9 +163,13 @@ text-decoration: none;}
     overflow: hidden;
     background-color: #e9e9e9;
     display: flex;
+    align-items: center;
+    margin-top: 35px;
+    margin-right:60px ;
+    width:max-content;
   }
   .main-container .search-container {
-    float: right;
+    float:right;
     margin-top: 12px;
     position: fixed;
   }
@@ -180,7 +184,6 @@ text-decoration: none;}
   }
   
   .main-container .search-container button {
-    /* float: right; */
     height:40px;
     width:40px;
     padding: 6px 10px;

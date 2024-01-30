@@ -69,14 +69,19 @@ class DashboardController extends Controller
 
     }
     
-     public function search(Request $request){
-        $search=$request->search;
-        $posts=Post::where(function($query) use($search){
-
-        $query->where('title','like','%'.$search.'%')
-        ->orwhere('description','like','%'.$search.'%')->orwhere('user_name','like','%'.$search.'%');
-    });
-    return view('dashboard',compact('posts','search'));
+    public function search(Request $requeest)
+    {
+        $search=$request['search'] ?? "";
+        if($search !=""){
+            $user=User::where('name','=',$search)->get();
+        }
+        else{
+            //return redirect()->back()->with('search','not found');
+            $user=User::all();
+        }
+        // $data=compact('user','search');
+        return view('search',compact('user','search'));
+    }
 }
 
-}
+

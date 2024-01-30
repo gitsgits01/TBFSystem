@@ -89,6 +89,9 @@ class UserController extends Controller
         // $user->delete();
         // return redirect()->route('login')->with('Status','Account Deleted Successfully.');
     }
-
+    // public function profile(User $user)
+    // {
+    //     return view('userprofile', compact('user'));
+    // }
 }
 
