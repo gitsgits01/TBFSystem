@@ -1,4 +1,5 @@
 @extends('dashboard')
+
 <div class="container" style="width: 300px; margin-top:-300px">
     @if(isset($user))
     <table class="table table-striped">

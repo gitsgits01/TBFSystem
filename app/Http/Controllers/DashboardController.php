@@ -69,11 +69,11 @@ class DashboardController extends Controller
 
     }
     
-    public function search(Request $requeest)
+    public function search(Request $request)
     {
         $search=$request['search'] ?? "";
         if($search !=""){
-            $user=User::where('name','=',$search)->get();
+            $user=User::where('name','LIKE',"%$search%")->get();
         }
         else{
             //return redirect()->back()->with('search','not found');
