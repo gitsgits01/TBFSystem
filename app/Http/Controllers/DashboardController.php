@@ -76,7 +76,7 @@ class DashboardController extends Controller
     }
 
     
-    public function search(Request $requeest)
+    public function search(Request $request)
     {
         $search=$request['search'] ?? "";
         if($search !=""){
@@ -89,6 +89,13 @@ class DashboardController extends Controller
         // $data=compact('user','search');
         return view('search',compact('user','search'));
     }
+
+    public function userprofileshow($id){
+        return view('userprofileshow');
+
+    }
+
 }
+
 
 

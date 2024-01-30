@@ -11,7 +11,7 @@
         <tbody>
             @foreach($user as $user)
             <tr>
-                <td><a href="{{ url('/user/' . $user->id) }}">{{$user->name}}</a></td>
+                <td><a href="{{ url('/user/' . $user->id) }}">{{$user->name}}</a></a></td>
                 <td>{{$user->address}}</td>
             </tr>
             @endforeach

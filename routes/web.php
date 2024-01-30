@@ -66,6 +66,8 @@ Route::group(['middleware'=>'auth'],function(){
    Route::get('/confirm-deletion',[UserController::class,'confirm_deletion'])->name('confirm_deletion');
    Route::post('/account/delete',[UserController::class,'delete'])->name('delete.account');
 
+   Route::get('/post_delete/{id}',[UserController::class,'post_delete'])->name('post_delete');
+   Route::get('/schedule_delete/{id}',[UserController::class,'schedule_delete'])->name('schedule_delete_delete');
    
 });
 Route::middleware(['auth'])->group(function () {
@@ -82,7 +84,7 @@ Route::middleware(['auth'])->group(function () {
 });
 
 Route::get('/search',[DashboardController::class,'search'])->name('search');
-Route::get('/user/{user}', [UserController::class, 'profile'])->name('profile');
+Route::get('/user/{user}', [UserController::class, 'userprofileshow'])->name('userprofileshow');
 
 //Route::get('/reset', [UserController::class,'resetPassword'])->name('reset');
 

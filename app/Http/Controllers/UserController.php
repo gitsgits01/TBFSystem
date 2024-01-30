@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 use App\Models\User;
+use App\Models\Post;
+use App\Models\Schedule;
 
 class UserController extends Controller
 {
@@ -80,9 +82,20 @@ class UserController extends Controller
         ]);
         return redirect()->route('cancel');
     }
-    // public function profile(User $user)
-    // {
-    //     return view('userprofile', compact('user'));
-    // }
+    public function userprofileshow(User $user)
+    {
+        return view('userprofileshow', compact('user'));
+    }
+    public function post_delete($id){
+        $data=Post::find($id);
+        $data->delete();
+        return redirect()->back()->with('message','Post deleted Successfully');
+    }
+    public function schedule_delete($id){
+        $data=Schedule::find($id);
+        $data->delete();
+        return redirect()->back()->with('message','Schedule deleted successfully');
+    }
+
 }
 
