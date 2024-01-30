@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 use App\Models\User;
+use App\Models\Post;
+use App\Models\Schedule;
 
 class UserController extends Controller
 {
@@ -76,22 +78,24 @@ class UserController extends Controller
         $user=Auth::user();
         $delete =user::whereId(auth()->id())->delete([
             
+            
         ]);
-     // if(Hash::check($request->input('password'),$user->password)){
-        //     $user->delete();
-        
-        // Auth::logout(); //logout the user after deletion
-        // return redirect('/')->with('success','Account deleted successfully');
-        // }
-        // return redirect()->back()->with('error','PAssword verification failed. Please try again.');
-
-        // $user=User::find($id);
-        // $user->delete();
-        // return redirect()->route('login')->with('Status','Account Deleted Successfully.');
+        return redirect()->route('cancel');
     }
-    // public function profile(User $user)
-    // {
-    //     return view('userprofile', compact('user'));
-    // }
+    public function userprofileshow(User $user)
+    {
+        return view('userprofileshow', compact('user'));
+    }
+    public function post_delete($id){
+        $data=Post::find($id);
+        $data->delete();
+        return redirect()->back()->with('message','Post deleted Successfully');
+    }
+    public function schedule_delete($id){
+        $data=Schedule::find($id);
+        $data->delete();
+        return redirect()->back()->with('message','Schedule deleted successfully');
+    }
+
 }
 

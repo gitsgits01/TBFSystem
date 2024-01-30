@@ -28,22 +28,18 @@
     <div class="tdata">
      @foreach($data as $data)
       <div class="timeline">
-        <p class="username">{{Auth::user()->name}}&nbsp;created a post.<i class="fa-solid fa-circle-exclamation"></i>
-          {{-- <div class="dropdown"> 
-            <p onclick="myFunction()" class="dropbtn"><i class="fa-solid fa-circle-exclamation"></i></p>
-            <div id="myDropdown" class="dropdown-content">
-              <a href="#">Delete Post</a>
-              
-            </div>
-          </div> --}}
+        <p class="username">{{Auth::user()->name}}&nbsp;created a post.&nbsp;&nbsp;&nbsp; <a  onclick="return confirm('Are you sure you want to delete this?')" href="{{url('post_delete',$data->id)}}" class="btn btn-danger btn-sm">Delete</a>
+      
         </p>
+        
         <p class="post-title">{{$data->title}}</p>
         <div class="post-img"><img src="{{asset($data->image)}}"></div>
       </div>
       @endforeach
       @foreach($schedule as $schedule)
       <div class="timeline">
-        <p class="username">{{Auth::user()->name}}&nbsp;Scheduled a travel.<i class="fa-solid fa-circle-exclamation"></i></p>
+        <p class="username">{{Auth::user()->name}}&nbsp;Scheduled a travel.&nbsp;&nbsp; <a onclick="return confirm('Are you sure you want to delete this?')" href="{{url('schedule_delete',$schedule->id)}}" class="btn btn-danger btn-sm">Delete </a>
+        </p>
         <p class="location">Location:{{$schedule->location}}</p>
         <p class="destination">Destination:{{$schedule->destination}}</p>
         <p class="date">Date:{{$schedule->date}}</p>
