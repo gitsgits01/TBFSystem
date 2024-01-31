@@ -68,6 +68,8 @@ Route::group(['middleware'=>'auth'],function(){
 
    Route::get('/post_delete/{id}',[UserController::class,'post_delete'])->name('post_delete');
    Route::get('/schedule_delete/{id}',[UserController::class,'schedule_delete'])->name('schedule_delete_delete');
+
+   //Route::get('/recommendations/{userId}', [TravelRecommendationController::class, 'recommendDestinations']);
    
 });
 Route::middleware(['auth'])->group(function () {

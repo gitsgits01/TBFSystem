@@ -16,28 +16,24 @@ class DashboardController extends Controller
     
     public function __invoke()
     {
-        if(Auth::check())
-        {
-            $user=Auth::user();
-            $userid=$user->id;
-            $username=$user->name;
-            $data=Post::where('user_id','=',$userid)->get();
-            $schedule=Schedule::where('user_id','=',$userid)->get();
-            return view('dashboard',compact('data','schedule'));
-            // return view('dashboard');
-        }
-        else{
-            return redirect()->route('login')->withSuccess('Login first');
-        }
-        
-        
-        // // Authorize the "update" ability for the current user on the given post
-        // $this->authorize('update', $post);
-    
-        // // Update the post
-        // $post->update($request->all());
-    
-        // return redirect()->route('posts.index');
+
+        // $user = Auth::user();
+        // $posts=Post::where('user_id, $userid')->latest()->get();
+        // $schedules=Schedule::where('user_id,$userid')->latest()->get();
+        // return view("dashboard",compact('posts','schedules'));
+        // if(Auth::guest())
+        // {
+        //     $user=Auth::user();
+        //     $userid=$user->id;
+        //     $username=$user->name;
+        //     $data=Post::where('user_id','=',$userid)->get();
+        //     $schedule=Schedule::where('user_id','=',$userid)->get();
+        //     return view('dashboard',compact('data','schedule'));
+        //     // return view('dashboard');
+        // }
+        // else{
+        //     return redirect()->route('login')->withSuccess('Login first');
+        // }
     }
     public function crepost(Request $request)
     {   
@@ -49,10 +45,6 @@ class DashboardController extends Controller
         $post->title = $request->title;
         $post->user_id=$userid;
         $post->user_name=$username;
-        // $image=$request->image;
-        // $name=$image->getClientOriginalName();
-        // $image->storeAs('public/uploadedpost',$name);
-        // $post->image = $name;
 
         $image=time().'.'.$request->image->extension();
         $request->image->move(public_path('uploadedpost'),$image);
