@@ -1,6 +1,6 @@
-@extends('dashboard')
+{{-- @extends('dashboard') --}}
 
-<div class="container" style="width: 300px; margin-top:-300px">
+<div class="container" style="width: 500px">
     @if(isset($user))
     <table class="table table-striped">
         <thead>

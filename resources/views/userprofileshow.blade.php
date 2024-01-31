@@ -19,30 +19,30 @@
       
         <div class="user-details">
            
-            <p>{{Auth::user()->name}}</p> 
-            <p>{{Auth::user()->dob}}</p>
+            <p>{{$user->name}}</p> 
+            <p>{{$user->dob}}</p>
             <a href="{{route('dashboard')}}">Dashboard</a>
         </div>
     </div>
     <div class="tdata">
-     @foreach($data as $data)
+     @foreach($user as $user)
       <div class="timeline">
         <p class="username">{{Auth::user()->name}}&nbsp;created a post.
         </p>
-        <p class="post-title">{{$data->title}}</p>
-        <div class="post-img"><img src="{{asset($data->image)}}"></div>
+        <p class="post-title">{{Auth::user()->title}}</p>
+        <div class="post-img"><img src="{{asset($user->image)}}"></div>
       </div>
       @endforeach
-      @foreach($schedule as $schedule)
+      {{-- @foreach($schedule as $schedule)
       <div class="timeline">
-        <p class="username">{{Auth::user()->name}}&nbsp;Scheduled a travel.<i class="fa-solid fa-circle-exclamation"></i></p>
+        <p class="username">{{$user()->name}}&nbsp;Scheduled a travel.<i class="fa-solid fa-circle-exclamation"></i></p>
         <p class="location">Location:{{$schedule->location}}</p>
         <p class="destination">Destination:{{$schedule->destination}}</p>
         <p class="date">Date:{{$schedule->date}}</p>
         <p class="days">Number of Days:{{$schedule->days}}</p>
 
       </div>
-      @endforeach
+      @endforeach --}}
     </div>
   
     

@@ -13,6 +13,7 @@ use app\Http\Controllers\Auth;
 use App\Http\Controllers\PusherController;
 use App\Http\Controllers\ScheduleController;
 use  App\Http\Middleware;
+use App\Models\Feeditem;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\Input;
@@ -42,7 +43,6 @@ Route::get('/signup',[SignupController::class,'form'])->name('signup');
 Route::post('/signup',[SignupController::class,'store'])->name('signup.store');
 Route::get('/login',[LoginController::class,'form'])->name('login');
 Route::post('/login',[LoginController::class, 'login'])->name('login.store');
-
 });
 
 
@@ -66,14 +66,14 @@ Route::group(['middleware'=>'auth'],function(){
    Route::get('/confirm-deletion',[UserController::class,'confirm_deletion'])->name('confirm_deletion');
    Route::post('/account/delete',[UserController::class,'delete'])->name('delete.account');
 
-   Route::get('/post_delete/{id}',[UserController::class,'post_delete'])->name('post_delete');
-   Route::get('/schedule_delete/{id}',[UserController::class,'schedule_delete'])->name('schedule_delete_delete');
-   
+   Route::get('/search',[DashboardController::class,'search'])->name('search');
+    Route::get('/user/{user}', [UserController::class, 'profile'])->name('profile');
 });
 Route::middleware(['auth'])->group(function () {
     
     Route::post('/send-message',[ChatController::class, 'sendMessage']);
     Route::get('/dashboard',DashboardController::class.'@__invoke')->name('dashboard');
+    Route::get('/dashboard',[DashboardController::class,'showTimeline'])->name('dashboard');
     //Route::get('/chatify',PusherController::class.'broadcast')->name('chatify');
 
     // Route::get('/message', [MessageController::class, 'index'])->name('message.index');
@@ -83,8 +83,12 @@ Route::middleware(['auth'])->group(function () {
 
 });
 
-Route::get('/search',[DashboardController::class,'search'])->name('search');
-Route::get('/user/{user}', [UserController::class, 'userprofileshow'])->name('userprofileshow');
+// Route::get('dashboard',function(){
+//     return view('dashboard',[
+//         'feedItems'=>Feeditem::latest('created_at')->get(),
+//     ]);
+// });
+
 
 //Route::get('/reset', [UserController::class,'resetPassword'])->name('reset');
 

@@ -91,8 +91,22 @@ class DashboardController extends Controller
     }
 
     public function userprofileshow($id){
-        return view('userprofileshow');
+        $user=User::find($id);
+        // $userid=$user->id;
+        // $username=$user->name;
+        // $data=Post::where('user_id','=',$userid)->get();
+        // $schedule=Schedule::where('user_id','=',$userid)->get();
+        if(!$user){
+            abort('not found');
+        }
+        return view('userprofileshow', compact('user'));
 
+    }
+
+    public function showTimeline(){
+        $posts=Post::all();
+        $schedule=Schedule::all();
+        return view('dashboard',compact('posts','schedule'));
     }
 
 }
