@@ -13,26 +13,37 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   </head>
   <body>
+    
+    <div class="profile-container">
+        {{-- <i class="fa-solid fa-user"></i> --}}
+        
+      
+        <div class="user-details">
+           
+            <p>{{$user->name}}</p> 
+            <p>{{$user->dob}}</p>
+            <a href="{{route('dashboard')}}">Dashboard</a>
+        </div>
+    </div>
     <div class="tdata">
-     @foreach($posts as $post)
+     @foreach($user as $user)
       <div class="timeline">
         <p class="username">{{$post->user->name}}&nbsp;created a post.
         </p>
-        <p class="post-title">{{$post->title}}</p>
-        <div class="post-img"><img src="{{asset($post->image)}}"></div>
+        <p class="post-title">{{Auth::user()->title}}</p>
+        <div class="post-img"><img src="{{asset($user->image)}}"></div>
       </div>
       @endforeach
-      @foreach($schedules as $schedule)
+      {{-- @foreach($schedule as $schedule)
       <div class="timeline">
-        <p class="username">{{$schedule->name}}&nbsp;Scheduled a travel.&nbsp;&nbsp;&nbsp;&nbsp;
-        <a onclick="return confirm('Are you sure you want to Join ?')"href="{{url('chatify{id}',$user->id)}}" class="btn btn-info btn-sm">Join</a>
+        <p class="username">{{$user()->name}}&nbsp;Scheduled a travel.<i class="fa-solid fa-circle-exclamation"></i></p>
         <p class="location">Location:{{$schedule->location}}</p>
         <p class="destination">Destination:{{$schedule->destination}}</p>
         <p class="date">Date:{{$schedule->date}}</p>
         <p class="days">Number of Days:{{$schedule->days}}</p>
 
       </div>
-      @endforeach
+      @endforeach --}}
     </div>
     @endif
     

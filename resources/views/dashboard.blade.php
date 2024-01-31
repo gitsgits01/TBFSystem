@@ -48,6 +48,27 @@
           <input type="text" placeholder="Search.." name="search" >
           <button type="submit"><i class="fa fa-search"></i></button>
         </form>
+        <div>@include('search')</div>
+      </div>
+      <div class="tdata">
+        @foreach($schedule as $schedule)
+        <div class="timeline">
+        <p class="username">{{$schedule->user_name}}&nbsp;Scheduled a trip to {{$schedule->destination}} from {{$schedule->location}} &nbsp; on {{$schedule->date}}. &nbsp;</p> 
+        <p><a onclick="return confirm('Are you sure you want to join this?')" href="{{url('chatify/'.$schedule->user_id)}}" class="btn btn-primary btn-sm">Join </a>
+        </p>
+        </div>
+        @endforeach
+
+
+        @foreach($posts as $post)
+        <div class="timeline">
+        <p class="username">{{$post->user_name}}&nbsp;created a post.&nbsp;&nbsp;&nbsp;</p>
+        
+        <p class="post-title">{{$post->title}}</p>
+        <div class="post-img"><img src="{{asset($post->image)}}"></div>
+        </div>
+       @endforeach
+      
       </div>
     </div>
 
