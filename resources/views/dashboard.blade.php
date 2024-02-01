@@ -39,6 +39,7 @@
             <div class="items"><a href="{{route('notification')}}"><i class="fa-solid fa-bell"></i>Notification</a></div>
             <div class="items">
               <form action="{{route('destination')}}" method="post">
+                @csrf
                 <input type="text" name="place" placeholder="Add Visited Place"><br/>
                 <input type="submit" class="btn btn-success" value="submit"> 
               </form>
@@ -59,14 +60,14 @@
       </div>
       <div class="tdata">
 
-        @if(Session::has('success'))
+        {{-- @if(Session::has('success'))
         <p class="text-success">{{Session::get('success')}}</p>
         
           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
       
-        @endif
+        @endif --}}
         
         
         

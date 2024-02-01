@@ -1,8 +1,19 @@
 
+@extends('dashboard')
 @section('content')
-    <h1>Matching Trips</h1>
+<div class="container">
+    <h1>Suggested Users</h1>
 
-    @foreach($recommendedUsers as $user)
-        <p>User: {{ $user->user->name }}, Destination: {{ $user->destination }}, Departure Date: {{ $user->departure_date }}</p>
-    @endforeach
+    @if($suggestedUsers->count() > 0)
+        <ul>
+            @foreach($suggestedUsers as $suggestedUser)
+                <li>{{ $suggestedUser->name }}</li>
+                <!-- Display other suggested user details as needed -->
+            @endforeach
+        </ul>
+    @else
+        <p>No suggested users at the moment.</p>
+    @endif
+</div>
+
 @endsection

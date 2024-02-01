@@ -71,6 +71,8 @@ Route::group(['middleware'=>'auth'],function(){
 
     Route::post('/destination',[DashboardController::class,'addDestination'])->name('destination');
     Route::get('/findbuddy',[RecommendationController::class,'findMatchingTrips'])->name('notification');
+
+    Route::get('/recommendations/{user_id}',[RecommendationController::class,'showSuggestedUsers']);
 });
 
 
