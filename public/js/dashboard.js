@@ -15,3 +15,6 @@ function myFunction() {
       }
     }
   }
+
+
+// $('.alert').alert()

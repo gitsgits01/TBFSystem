@@ -14,6 +14,7 @@
   </head>
   <body>
     @csrf
+  
     <div id="left-sidebar">
       <div class="nav-list">
         <div id="travel">
@@ -35,7 +36,13 @@
 
               </div>
             </div>
-            <div class="items"><a href="#"><i class="fa-solid fa-bell"></i>Notification</a></div>
+            <div class="items"><a href="{{route('notification')}}"><i class="fa-solid fa-bell"></i>Notification</a></div>
+            <div class="items">
+              <form action="{{route('destination')}}" method="post">
+                <input type="text" name="place" placeholder="Add Visited Place"><br/>
+                <input type="submit" class="btn btn-success" value="submit"> 
+              </form>
+            </div>
 
             <div class="items"><a href="{{route('logout')}}"><i class="fa-solid fa-right-from-bracket"></i>Logout</a></div>
         </div>
@@ -51,6 +58,19 @@
         <div>@include('search')</div>
       </div>
       <div class="tdata">
+
+        @if(Session::has('success'))
+        <p class="text-success">{{Session::get('success')}}</p>
+        
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+      
+        @endif
+        
+        
+        
+        
         @foreach($schedule as $schedule)
         <div class="timeline">
         <p class="username">{{$schedule->user_name}}&nbsp;Scheduled a trip to {{$schedule->destination}} from {{$schedule->location}} &nbsp; on {{$schedule->date}}. &nbsp;</p> 

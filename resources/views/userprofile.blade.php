@@ -26,9 +26,14 @@
         </div>
     </div>
     <div class="tdata">
+      <!--Sessions-->
+      
+    @if(Session::has('success'))
+      <script>alert("{{Session::get('success')}}");</script>
+    @endif
      @foreach($data as $data)
       <div class="timeline">
-        <p class="username">{{Auth::user()->name}}&nbsp;created a post.&nbsp;&nbsp;&nbsp; <a  onclick="return confirm('Are you sure you want to delete this?')" href="{{url('post_delete',$data->id)}}" class="btn btn-danger btn-sm">Delete</a>
+        <p class="username">{{Auth::user()->name}}&nbsp;created a post.&nbsp;&nbsp;&nbsp; <a  onclick="return confirm('Are you sure you want to delete this?')" href="{{route('postdelete',$data->id)}}" class="btn btn-danger btn-sm">Delete</a>
       
         </p>
         
@@ -38,7 +43,7 @@
       @endforeach
       @foreach($schedule as $schedule)
       <div class="timeline">
-        <p class="username">{{Auth::user()->name}}&nbsp;Scheduled a travel.&nbsp;&nbsp; <a onclick="return confirm('Are you sure you want to delete this?')" href="{{url('schedule_delete',$schedule->id)}}" class="btn btn-danger btn-sm">Delete </a>
+        <p class="username">{{Auth::user()->name}}&nbsp;Scheduled a travel.&nbsp;&nbsp; <a onclick="return confirm('Are you sure you want to delete this?')" href="{{route('scheduledelete',$schedule->id)}}" class="btn btn-danger btn-sm">Delete </a>
         </p>
         <p class="location">Location:{{$schedule->location}}</p>
         <p class="destination">Destination:{{$schedule->destination}}</p>

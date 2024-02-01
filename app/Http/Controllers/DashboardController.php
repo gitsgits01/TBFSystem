@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Redirect;
 use App\Http\Requests;
+use App\Models\Destination;
 use App\Models\Post;
 use App\Models\User;
 use Symfony\Component\HttpKernel\Controller\ArgumentResolver\RequestPayloadValueResolver;
@@ -90,16 +91,27 @@ class DashboardController extends Controller
         return view('search',compact('user','search'));
     }
 
-    public function userprofileshow($id){
-        $user=User::find($id);
-        // $userid=$user->id;
-        // $username=$user->name;
-        // $data=Post::where('user_id','=',$userid)->get();
-        // $schedule=Schedule::where('user_id','=',$userid)->get();
-        if(!$user){
-            abort('not found');
-        }
-        return view('userprofileshow', compact('user'));
+    // public function userprofileshow($id){
+    //     $userid=User::find($id); // Get the 'id' parameter from the request
+    //     $user=User::where('id','=',$userid)->get();
+    //      // Use find instead of where to get a single user by ID
+    //     //dd($user);
+    //     $posts = Post::where('user_id', '=', $userid)->get();
+    //     $schedules = Schedule::where('user_id', '=', $userid)->get();
+    
+    //     return view('userprofileshow', compact('user', 'posts', 'schedules'));
+
+    // }
+
+    public function userprofileshow(Request $request){
+        $userId = $request->get('id'); // Get the 'id' parameter from the request
+
+        $user = User::find($userId); // Use find instead of where to get a single user by ID
+        //dd($user);
+        $posts = Post::where('user_id', '=', $userId)->get();
+        $schedules = Schedule::where('user_id', '=', $userId)->get();
+    
+        return view('userprofileshow', compact('user', 'posts', 'schedules'));
 
     }
 
@@ -109,6 +121,18 @@ class DashboardController extends Controller
         return view('dashboard',compact('posts','schedule'));
     }
 
+    public function addDestination(Request $request){
+        $user=Auth::user();
+        $userid=$user->id;
+        $username=$user->name;
+        
+        $destination = new Destination;
+        $destination->Place = $request->place;
+        $destination->user_id=$userid;
+        $destination->user_name=$username;
+        $destination->save();
+        return redirect()->route('dashboard')->with('success',"Successfully added");
+    }
 }
 
 

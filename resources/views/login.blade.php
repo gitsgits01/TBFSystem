@@ -22,6 +22,14 @@
           <p class="text-success">{{Session::get('success')}}</p>
         @endif
 
+        <!--Sessions-->
+        @if(Session::has('Status'))
+          <p class="text-danger">{{Session::get('Status')}}</p>
+        @endif
+        {{-- @if(Session::has('message'))
+          <p class="text-success">{{Session::get('message')}}</p>
+        @endif --}}
+
 
           <form method="POST" action="{{ route('login.store') }}" class="login-form">
               @csrf

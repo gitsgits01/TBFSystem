@@ -66,6 +66,7 @@ body {
     flex-direction: column;
     height:100vh;
 
+
 }
 
 .timeline{
@@ -75,6 +76,7 @@ body {
     padding-top:10px;
     padding-left: 10px;
     float:left;
+    /* width:100%; */
     /* text-align: center; */
 }
 .username{
@@ -143,12 +145,15 @@ body {
 .timeline div{
 
     height: max-content;
-    /* width: max-content; */
+    width: max-content;
 }
 .timeline  img{
     justify-content: center;
     margin-bottom: 20px; 
-    height:400px;
-    width:auto;
+    margin-right:10px;
+    margin-left:5px;
+    height:auto;
+    
+    width:720px;
     src:"/uploadedpost/";
 }
