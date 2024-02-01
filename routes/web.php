@@ -12,6 +12,7 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 use app\Http\Controllers\Auth;
 use App\Http\Controllers\PusherController;
 use App\Http\Controllers\ScheduleController;
+use App\Http\Controllers\RecommendationController;
 use  App\Http\Middleware;
 use App\Models\Feeditem;
 use Illuminate\Http\Request;
@@ -57,7 +58,6 @@ Route::group(['middleware'=>'auth'],function(){
     Route::get('/dashboard/userprofile',[DashboardController::class,'userprofile'])->name('userprofile');
 
     Route::get('/logout', [LoginController::class,'logout'])->name('logout');
-    //Route::get('/create_post', [DashBoardController::class,'post'] );
     Route::post('/create_post', [DashboardController::class,'crepost'])->name('create_post');
 
     Route::get('/changepassword',[UserController::class,'changePassword'] )->name('changepassword');
@@ -67,13 +67,27 @@ Route::group(['middleware'=>'auth'],function(){
    Route::post('/account/delete',[UserController::class,'delete'])->name('delete.account');
 
    Route::get('/search',[DashboardController::class,'search'])->name('search');
-    Route::get('/user/{user}', [UserController::class, 'profile'])->name('profile');
+    Route::get('/profile/{id}',[DashboardController::class,'userprofileshow'])->name('profile');
+
+    Route::post('/destination',[DashboardController::class,'addDestination'])->name('destination');
+    Route::get('/findbuddy',[RecommendationController::class,'findMatchingTrips'])->name('notification');
+
+    Route::get('/recommendations/{user_id}',[RecommendationController::class,'showSuggestedUsers']);
 });
+
+
 Route::middleware(['auth'])->group(function () {
     
     Route::post('/send-message',[ChatController::class, 'sendMessage']);
     Route::get('/dashboard',DashboardController::class.'@__invoke')->name('dashboard');
     Route::get('/dashboard',[DashboardController::class,'showTimeline'])->name('dashboard');
+
+    Route::get('/scheduledelete/{id}',[ScheduleController::class,'scheduleDelete'])->name('scheduledelete');
+    Route::get('/postdelete/{id}',[ScheduleController::class,'postDelete'])->name('postdelete');
+
+    // Route::get('/scheduledelete',[ScheduleController::class,'scheduleDelete'])->name('scheduledelete');
+    // Route::get('/postdelete',[ScheduleController::class,'postDelete'])->name('postdelete');
+
     //Route::get('/chatify',PusherController::class.'broadcast')->name('chatify');
 
     // Route::get('/message', [MessageController::class, 'index'])->name('message.index');
@@ -83,11 +97,6 @@ Route::middleware(['auth'])->group(function () {
 
 });
 
-// Route::get('dashboard',function(){
-//     return view('dashboard',[
-//         'feedItems'=>Feeditem::latest('created_at')->get(),
-//     ]);
-// });
 
 
 //Route::get('/reset', [UserController::class,'resetPassword'])->name('reset');

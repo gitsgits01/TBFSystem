@@ -2,7 +2,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>{{$user->name}}'s Profile </title>
+    <title> Profile </title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -20,21 +20,27 @@
       
         <div class="user-details">
            
-            <p>{{$user->name}}</p> 
-            <p>{{$user->dob}}</p>
-            <a href="{{route('dashboard')}}">Dashboard</a>
+          @if($user)
+          <p>{{$user->name}}</p> 
+          <p>{{$user->email}}</p>
+          <p>{{$user->address}}</p>
+          <p>{{$user->dob}}</p>
+          <a href="{{route('dashboard')}}">Dashboard</a>
+          {{-- @else
+          <p>User not found</p> --}}
+          @endif
+
         </div>
     </div>
     <div class="tdata">
-     @foreach($user as $user)
+     @foreach($posts as $post)
       <div class="timeline">
-        <p class="username">{{$post->user->name}}&nbsp;created a post.
-        </p>
-        <p class="post-title">{{Auth::user()->title}}</p>
-        <div class="post-img"><img src="{{asset($user->image)}}"></div>
+        {{-- <p class="username">{{$post->name}}&nbsp;created a post.</p> --}}
+        <p class="post-title">{{$post->title}}</p>
+        <div class="post-img"><img src="{{asset($post->image)}}"></div>
       </div>
       @endforeach
-      {{-- @foreach($schedule as $schedule)
+      @foreach($schedules as $schedule)
       <div class="timeline">
         <p class="username">{{$user()->name}}&nbsp;Scheduled a travel.<i class="fa-solid fa-circle-exclamation"></i></p>
         <p class="location">Location:{{$schedule->location}}</p>
@@ -43,7 +49,7 @@
         <p class="days">Number of Days:{{$schedule->days}}</p>
 
       </div>
-      @endforeach --}}
+      @endforeach
     </div>
     @endif
     
