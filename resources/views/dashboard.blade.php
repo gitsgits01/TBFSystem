@@ -35,8 +35,9 @@
                 <a href="{{route('password.request')}}">Reset Password</a>
 
               </div>
-            </div>
-            <div class="items"><a href="{{route('notification')}}"><i class="fa-solid fa-bell"></i>Notification</a></div>
+            </div>           
+             <div class="items"><a href="{{route('notification',Auth::user()->id)}}"><i class="fa-solid fa-bell"></i>Notification</a></div>
+
             <div class="items">
               <form action="{{route('destination')}}" method="post">
                 @csrf

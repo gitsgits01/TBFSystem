@@ -70,9 +70,8 @@ Route::group(['middleware'=>'auth'],function(){
     Route::get('/profile/{id}',[DashboardController::class,'userprofileshow'])->name('profile');
 
     Route::post('/destination',[DashboardController::class,'addDestination'])->name('destination');
-    Route::get('/findbuddy',[RecommendationController::class,'findMatchingTrips'])->name('notification');
 
-    Route::get('/recommendations/{user_id}',[RecommendationController::class,'showSuggestedUsers']);
+    Route::get('/suggested-users/{id}',[RecommendationController::class,'showSuggestedUsers'])->name('notification');
 });
 
 

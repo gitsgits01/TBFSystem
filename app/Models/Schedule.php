@@ -29,4 +29,9 @@ class Schedule extends Model
     // public function creatorName(){
     //     return $this->user->name;
     // }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
