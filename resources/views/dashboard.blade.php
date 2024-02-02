@@ -75,7 +75,7 @@
         
         @foreach($schedule as $schedule)
         <div class="timeline">
-        <p class="username">{{$schedule->user_name}}&nbsp;Scheduled a trip to {{$schedule->destination}} from {{$schedule->location}} &nbsp; on {{$schedule->date}}. &nbsp;</p> 
+        <p class="username"><a href="{{ route('profile' ,$schedule->user_id) }}">{{$schedule->user_name}}</a>&nbsp;Scheduled a trip to {{$schedule->destination}} from {{$schedule->location}} &nbsp; on {{$schedule->date}}. &nbsp;</p> 
         <p><a onclick="return confirm('Are you sure you want to join this?')" href="{{url('chatify/'.$schedule->user_id)}}" class="btn btn-primary btn-sm">Join </a>
         </p>
         </div>
@@ -84,7 +84,7 @@
 
         @foreach($posts as $post)
         <div class="timeline">
-        <p class="username">{{$post->user_name}}&nbsp;created a post.&nbsp;&nbsp;&nbsp;</p>
+        <p class="username"><a href="{{ route('profile' ,$post->user_id) }}">{{$post->user_name}}</a>&nbsp;created a post.&nbsp;&nbsp;&nbsp;</p>
         
         <p class="post-title">{{$post->title}}</p>
         <div class="post-img"><img src="{{asset($post->image)}}"></div>

@@ -62,8 +62,9 @@ class DashboardController extends Controller
         $user=Auth::user();
         $userid=$user->id;
         $username=$user->name;
-        $data=Post::where('user_id','=',$userid)->get();
-        $schedule=Schedule::where('user_id','=',$userid)->get();
+        $data=Post::where('user_id','=',$userid)->orderBy('created_at', 'desc')->get();
+        $schedule=Schedule::where('user_id','=',$userid)->orderBy('created_at', 'desc')->get();
+
         return view('userprofile',compact('data','schedule'));
 
     }
@@ -95,21 +96,53 @@ class DashboardController extends Controller
 
     // }
 
-    public function userprofileshow(Request $request){
-        $userId = $request->get('id'); // Get the 'id' parameter from the request
+    public function userprofileshow($id){
+        $user= User::find($id);
+        if(!$user){
+            return redirect()->route('dashboard')->with('error','User not found');
+        }
 
-        $user = User::find($userId); // Use find instead of where to get a single user by ID
-        //dd($user);
-        $posts = Post::where('user_id', '=', $userId)->get();
-        $schedules = Schedule::where('user_id', '=', $userId)->get();
-    
-        return view('userprofileshow', compact('user', 'posts', 'schedules'));
+        // $p_id = $user->id;
 
+        // // Get posts related to the user
+        // $posts = Post::where('user_id', $p_id)->get();
+
+        // // Get schedules related to the user
+        // $schedules = Schedule::where('user_id', $p_id)->get();
+        // $posts = $user->posts;
+        // $schedules = $user->schedules;
+        // // $p_id=$user->pluck('id');
+        // // $posts=Post::select('id')->where('id','=',$p_id)->get();
+        // // $schedules=Schedule::select('id')->where('id','=',$p_id)->get();
+        $posts = $user->posts??[];
+        $schedules = $user->schedules??[];
+        
+        return view('userprofileshow', [
+            'user' => $user,
+            'posts' => $posts,
+            'schedules' => $schedules,
+        ]);
     }
 
-    public function showTimeline(){
-        $posts=Post::all();
-        $schedule=Schedule::all();
+    // public function userprofileshow(Request $request){
+    //     $userId = $request->get('id'); // Get the 'id' parameter from the request
+
+    //     $user = User::find($userId); // Use find instead of where to get a single user by ID
+    //     //dd($user);
+    //     $posts = Post::where('user_id', '=', $userId)->get();
+    //     $schedules = Schedule::where('user_id', '=', $userId)->get();
+    
+    //     return view('userprofileshow', compact('user', 'posts', 'schedules'));
+
+    // }
+
+    public function showTimeline(Request $request){
+        
+        $posts = Post::orderBy('created_at', 'desc')->get();
+        $schedule = Schedule::orderBy('created_at', 'desc')->get();
+
+        // $posts=Post::all();
+        // $schedule=Schedule::all();
         return view('dashboard',compact('posts','schedule'));
     }
 
@@ -123,6 +156,7 @@ class DashboardController extends Controller
         $destination->user_id=$userid;
         $destination->user_name=$username;
         $destination->save();
+        $user->User::getDestinations()->attach($destination->id);
         return redirect()->route('dashboard')->with('success',"Successfully added");
     }
 }

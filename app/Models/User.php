@@ -53,6 +53,11 @@ class User extends  Authenticatable
         return $this->hasMany(Post::class);
     }
 
+    public function schedules(){
+        return $this->hasMany(Schedule::class);
+    }
+
+
     public function getDestinations()
     {
         return $this->belongsToMany(Destination::class,'user_destinations')->withTimestamps();

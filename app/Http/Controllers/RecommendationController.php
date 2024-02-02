@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Recommender\RecommenderSystem;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Destination;
+
 class RecommendationController extends Controller
 {
     // public function recommendUsers(User $user)
@@ -58,7 +59,9 @@ class RecommendationController extends Controller
 
 //         return $dotProduct / ($magnitude1 * $magnitude2);
 //     }
-
+    // public function index(){
+    //     $this->set('users',$this->Destination::getUsers());
+    // }
 
 public function attachDestinationToUser($userId, $destinationId)
 {
