@@ -1,3 +1,4 @@
+@extends('dashboard')
 <!doctype html>
 <html lang="en">
   <head>
@@ -23,7 +24,7 @@
           <p>{{$user->name}}</p> 
           <p>{{$user->email}}</p>
           <p>{{$user->address}}</p>
-          <p>{{$user->dob}}</p>
+         
           <a href="{{route('dashboard')}}">Dashboard</a>
           {{-- @else
           <p>User not found</p> --}}
@@ -32,6 +33,10 @@
         </div>
     </div>
     <div class="tdata">
+      @if($posts->isNotEmpty())
+      @php
+      dd($posts);
+      @endphp
      @foreach($posts as $post)
       <div class="timeline">
         {{-- <p class="username">{{$post->name}}&nbsp;created a post.</p> --}}
@@ -39,9 +44,14 @@
         <div class="post-img"><img src="{{asset($post->image)}}"></div>
       </div>
       @endforeach
+      @endif
+      @if($schedules->isNotEmpty())
       @foreach($schedules as $schedule)
+      @php
+      dd($schedules);
+      @endphp
       <div class="timeline">
-        <p class="username">{{$user()->name}}&nbsp;Scheduled a travel.<i class="fa-solid fa-circle-exclamation"></i></p>
+        <p class="username">{{$user()->name}}&nbsp;Scheduled a travel.</p>
         <p class="location">Location:{{$schedule->location}}</p>
         <p class="destination">Destination:{{$schedule->destination}}</p>
         <p class="date">Date:{{$schedule->date}}</p>
@@ -49,8 +59,9 @@
 
       </div>
       @endforeach
+      @endif
     </div>
-  
+   
     
         <script src="{{asset('js/dashboard.js')}}"></script>
 

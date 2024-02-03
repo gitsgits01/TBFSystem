@@ -13,7 +13,6 @@ use Illuminate\Support\Facades\Redirect;
 
 
 
-
 class SignupController extends Controller
 {
     public function form(){
@@ -48,8 +47,10 @@ class SignupController extends Controller
         'gender'=>$request['gender'],
         'password'=>bcrypt($request['password']),
     ]);
+    $user->save();
     //$user=new User($request->all());
-      $user->save();
+   
+      
 return redirect()->route('login')->with('success','User Created Successfully ');
 
     // //login user here

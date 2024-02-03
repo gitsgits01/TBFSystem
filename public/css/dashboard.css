@@ -238,6 +238,12 @@ text-decoration: none;}
 .username p{
   margin-bottom: -2px;
 }
+.username a{
+  color:black;
+}
+.username a:hover{
+  text-decoration: none;
+}
 .post-title{
   font-size:16px;
 }
