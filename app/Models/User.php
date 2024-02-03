@@ -50,4 +50,9 @@ class User extends  Authenticatable
         'password' => 'hashed',
     ];
 
+
+    public function getDestinations()
+    {
+        return $this->belongsToMany(Destination::class,'user_destinations')->withTimestamps();
+    }
 }

@@ -9,7 +9,6 @@ use Illuminate\Database\Eloquent\Model;
 class Schedule extends Model
 {
     use HasFactory;
-    protected $foreignKey='user_id';
     protected $fillable = [
        
         'location',
@@ -29,4 +28,9 @@ class Schedule extends Model
     // public function creatorName(){
     //     return $this->user->name;
     // }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

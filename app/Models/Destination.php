@@ -14,4 +14,8 @@ class Destination extends Model
         'user_id',
         'user_name',
     ];
+
+    public function getUsers(){
+        return $this->belongsToMany(User::class,'user_destinations')->withTimestamps();
+    }
 }
