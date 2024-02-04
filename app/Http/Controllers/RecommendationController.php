@@ -11,83 +11,93 @@ use App\Models\Destination;
 
 class RecommendationController extends Controller
 {
-    // public function recommendUsers(User $user)
-    // {
-//         $currentSchedule = $user->schedules->last();
+    public function recommendUsers(User $user)
+    {
+        $matchingSchedules=[];
 
-//         $matchingSchedules = Schedule::where('destination', $currentSchedule->destination)
-//             ->where('departure_date', '>=', $currentSchedule->departure_date)
-//             ->get();
+        $userSchedules = $user->schedules;
 
-//         // Calculate cosine similarity
-//         $similarUsers = [];
-//         foreach ($matchingSchedules as $schedule) {
-//             $similarity = $this->calculateCosineSimilarity(
-//                 $currentSchedule->location,
-//                 $schedule->location
-//             );
+        // if ($userSchedules->isNotEmpty()) {
+            $currentSchedule = $userSchedules->last();
 
-//             $similarUsers[$schedule->user_id] = $similarity;
-//         }
+            if ($currentSchedule && isset($currentSchedule->destination) && isset($currentSchedule->date)) {
+                $matchingSchedules = Schedule::where('destination', $currentSchedule->destination)
+                ->where('date', '>=', $currentSchedule->date)
+                ->get();
+        
+                 
 
-//         // Sort users by similarity
-//         arsort($similarUsers);
+            }
+            // Calculate cosine similarity
+            $similarUsers = [];
+            foreach ($matchingSchedules as $schedule) {
+            $similarity = $this->calculateCosineSimilarity(
+            $currentSchedule->location,
+            $schedule->location
+            );
 
-//         // Get the top 5 similar users
-//         $topSimilarUsers = array_slice($similarUsers, 0, 5, true);
+            $similarUsers[$schedule->user_id] = $similarity;
+            }
 
-//         $recommendedUsers = User::whereIn('id', array_keys($topSimilarUsers))->get();
+            // Sort users by similarity
+            arsort($similarUsers);
 
-//         return view('recommendations', compact('recommendedUsers'));
-//     }
+            // Get the top 3 similar users
+            $topSimilarUsers = array_slice($similarUsers, 0, 3, true);
+        //}
 
-//     private function calculateCosineSimilarity($vector1, $vector2)
-//     {
-//         $dotProduct = array_sum(array_map('intval', $vector1)) * array_sum(array_map('intval', $vector2));
+       
 
-//         $magnitude1 = sqrt(array_sum(array_map(function ($val) {
-//             return intval($val) ** 2;
-//         }, $vector1)));
+        return view('notification', compact('topSimilarUsers'));
+    }
 
-//         $magnitude2 = sqrt(array_sum(array_map(function ($val) {
-//             return intval($val) ** 2;
-//         }, $vector2)));
+    private function calculateCosineSimilarity($vector1, $vector2)
+    {
+        $dotProduct = array_sum(array_map('intval', $vector1)) * array_sum(array_map('intval', $vector2));
 
-//         if ($magnitude1 == 0 || $magnitude2 == 0) {
-//             return 0;
-//         }
+        $magnitude1 = sqrt(array_sum(array_map(function ($val) {
+            return intval($val) ** 2;
+        }, $vector1)));
 
-//         return $dotProduct / ($magnitude1 * $magnitude2);
-//     }
+        $magnitude2 = sqrt(array_sum(array_map(function ($val) {
+            return intval($val) ** 2;
+        }, $vector2)));
+
+        if ($magnitude1 == 0 || $magnitude2 == 0) {
+            return 0;
+        }
+
+        return $dotProduct / ($magnitude1 * $magnitude2);
+    }
     // public function index(){
     //     $this->set('users',$this->Destination::getUsers());
     // }
 
-public function attachDestinationToUser($userId, $destinationId)
-{
-    $user = User::find($userId);
-    $destination = Destination::find($destinationId);
+// public function attachDestinationToUser($userId, $destinationId)
+// {
+//     $user = User::find($userId);
+//     $destination = Destination::find($destinationId);
 
-    if ($user && $destination && !$user->destinations->contains($destinationId)) {
-        $user->destinations()->attach($destinationId);
-        return redirect()->route('dashboard')->with('success', 'Destination attached successfully!');
-    }else{
-        return redirect()->route('dashboard')->with('error','error');
-    }
-}
-public function showSuggestedUsers($id)
-{
-    $user = User::find($id);
+//     if ($user && $destination && !$user->destinations->contains($destinationId)) {
+//         $user->destinations()->attach($destinationId);
+//         return redirect()->route('dashboard')->with('success', 'Destination attached successfully!');
+//     }else{
+//         return redirect()->route('dashboard')->with('error','error');
+//     }
+// }
+// public function showSuggestedUsers($id)
+// {
+//     $user = User::find($id);
 
-    if (!$user) {
-        return response()->json(['error' => 'User not found'], 404);
-    }
+//     if (!$user) {
+//         return response()->json(['error' => 'User not found'], 404);
+//     }
 
-    $recommender = new RecommenderSystem();
-    $suggestedUsers = $recommender->suggestUserFor($user);
+//     $recommender = new RecommenderSystem();
+//     $suggestedUsers = $recommender->suggestUserFor($user);
 
-    return view('notification', compact('suggestedUsers'));
-}
+//     return view('notification', compact('suggestedUsers'));
+// }
 
  }
 

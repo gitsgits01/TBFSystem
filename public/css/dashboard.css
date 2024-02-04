@@ -98,10 +98,10 @@ body{
     color:whitesmoke;
 }
 
-.items input[type='text'],input[type='submit']{
+/* .items input[type='text'],input[type='submit']{
   margin-bottom:5px;
   width:100%;
-}
+} */
 /* Dropdown Button */
 .dropbtn {
     background-color: whitesmoke;
