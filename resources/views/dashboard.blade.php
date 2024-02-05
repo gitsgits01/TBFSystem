@@ -36,15 +36,9 @@
 
               </div>
             </div>           
-             <div class="items"><a href="{{route('notification',Auth::user()->id)}}"><i class="fa-solid fa-bell"></i>Notification</a></div>
+            <div class="items"><a href="{{route('notification',Auth::user()->id)}}"><i class="fa-solid fa-bell"></i>Notification</a></div>
 
-            <div class="items">
-              <form action="{{route('destination')}}" method="post">
-                @csrf
-                <input type="text" name="place" placeholder="Add Visited Place"><br/>
-                <input type="submit" class="btn btn-success" value="submit"> 
-              </form>
-            </div>
+           
 
             <div class="items"><a href="{{route('logout')}}"><i class="fa-solid fa-right-from-bracket"></i>Logout</a></div>
         </div>

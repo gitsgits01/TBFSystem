@@ -69,9 +69,9 @@ Route::group(['middleware'=>'auth'],function(){
    Route::get('/search',[DashboardController::class,'search'])->name('search');
     Route::get('/profile/{id}',[DashboardController::class,'userprofileshow'])->name('profile');
 
-    Route::post('/destination',[DashboardController::class,'addDestination'])->name('destination');
+    //Route::post('/destination',[DashboardController::class,'addDestination'])->name('destination');
 
-    Route::get('/suggested-users/{id}',[RecommendationController::class,'showSuggestedUsers'])->name('notification');
+    Route::get('/suggested-users',[RecommendationController::class,'recommendUsers'])->name('notification');
 });
 
 

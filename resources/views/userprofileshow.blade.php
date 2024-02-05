@@ -23,9 +23,10 @@
           @if($user)
           <p>{{$user->name}}</p> 
           <p>{{$user->email}}</p>
-          <p>{{$user->address}}</p>
-         
-          <a href="{{route('dashboard')}}">Dashboard</a>
+          {{-- <p>{{$user->address}}</p> --}}
+
+         <p><a href="{{url('chatify/'.$user->id)}}"><i class="fa-solid fa-message"></i>Message</a></p>
+          <p><a href="{{route('dashboard')}}">Dashboard</a></p>
           {{-- @else
           <p>User not found</p> --}}
           @endif
@@ -33,28 +34,29 @@
         </div>
     </div>
     <div class="tdata">
-      @if($posts->isNotEmpty())
+      @if(!empty($posts))
       @php
       dd($posts);
       @endphp
      @foreach($posts as $post)
       <div class="timeline">
-        {{-- <p class="username">{{$post->name}}&nbsp;created a post.</p> --}}
-        <p class="post-title">{{$post->title}}</p>
-        <div class="post-img"><img src="{{asset($post->image)}}"></div>
+        <p class="username">{{$post['user_name']}}&nbsp;created a post.</p>
+        <p class="post-title">{{$post['title']}}</p>
+        <div class="post-img"><img src="{{asset($post['image'])}}"></div>
       </div>
       @endforeach
       @endif
-      @if($schedules->isNotEmpty())
+      @if(!empty($schedules))
       @foreach($schedules as $schedule)
-      @php
+      {{-- @php
       dd($schedules);
-      @endphp
+      @endphp --}}
       <div class="timeline">
-        <p class="username">{{$user()->name}}&nbsp;Scheduled a travel.</p>
-        <p class="location">Location:{{$schedule->location}}</p>
-        <p class="destination">Destination:{{$schedule->destination}}</p>
-        <p class="date">Date:{{$schedule->date}}</p>
+        <p class="username">{{$schedule['user_name']}}&nbsp;Scheduled a travel.</p>
+        <p class="location">Location:{{$schedule['location']}}</p>
+        <p class="destination">Destination:{{$schedule['destination']}}</p>
+        <p class="date">Date:{{$schedule['date']}}</p>
+
         <p class="days">Number of Days:{{$schedule->days}}</p>
 
       </div>
