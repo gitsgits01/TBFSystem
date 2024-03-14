@@ -1,6 +1,7 @@
 {{-- @extends('dashboard') --}}
 
 <div class="container" style="width: 500px">
+    @csrf
     @if(isset($user))
     <table class="table table-striped">
         <thead>

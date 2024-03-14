@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   </head>
   <body>
+    @csrf
     
     <div class="profile-container">
         {{-- <i class="fa-solid fa-user"></i> --}}
@@ -35,9 +36,9 @@
     </div>
     <div class="tdata">
       @if(!empty($posts))
-      @php
+      {{-- @php
       dd($posts);
-      @endphp
+      @endphp --}}
      @foreach($posts as $post)
       <div class="timeline">
         <p class="username">{{$post['user_name']}}&nbsp;created a post.</p>
@@ -48,9 +49,9 @@
       @endif
       @if(!empty($schedules))
       @foreach($schedules as $schedule)
-      {{-- @php
+      @php
       dd($schedules);
-      @endphp --}}
+      @endphp
       <div class="timeline">
         <p class="username">{{$schedule['user_name']}}&nbsp;Scheduled a travel.</p>
         <p class="location">Location:{{$schedule['location']}}</p>

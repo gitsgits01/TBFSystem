@@ -16,4 +16,9 @@ class ExampleTest extends TestCase
 
         $response->assertOk();
     }
+    public function test_example(){
+        $response= $this->get('/profile/{id}');
+        $response->assertStatus('200');
+
+    }
 }
