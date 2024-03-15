@@ -10,6 +10,7 @@ use App\Http\Requests;
 use App\Models\Destination;
 use App\Models\Post;
 use App\Models\User;
+use App\Models\Follower;
 use Symfony\Component\HttpKernel\Controller\ArgumentResolver\RequestPayloadValueResolver;
 
 class DashboardController extends Controller
@@ -106,28 +107,20 @@ class DashboardController extends Controller
             return redirect()->route('dashboard')->with('error','User not found');
         }
 
-        // $p_id = $user->id;
-
-        // // Get posts related to the user
-        // $posts = Post::where('user_id', $p_id)->get();
-
-        // // Get schedules related to the user
-        // $schedules = Schedule::where('user_id', $p_id)->get();
-        // $posts = $user->posts;
-        // $schedules = $user->schedules;
-        // // $p_id=$user->pluck('id');
-        // // $posts=Post::select('id')->where('id','=',$p_id)->get();
-        // // $schedules=Schedule::select('id')->where('id','=',$p_id)->get();
-        $posts = $user->posts instanceof \Illuminate\Database\Eloquent\Collection ? $user->posts->toArray() : [];
+        $posts = $user->posts ??[];
 
         $schedules = $user->schedules??[];
-        //dd(DB::getQueryLog());
+        // $user = User::findOrFail($id);
+        // $isFollowing = auth()->user()->isFollowing($user);
+        dd(DB::getQueryLog());
         
         return view('userprofileshow', [
             'user' => $user,
             'posts' => $posts,
             'schedules' => $schedules,
-        ]);
+            // 'isFollowing' => $isFollowing
+        ]
+        );
     }
 
     // public function userprofileshow(Request $request){

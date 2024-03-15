@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use App\Models\Follower;
 
 class User extends  Authenticatable
 {
@@ -62,4 +63,10 @@ class User extends  Authenticatable
     {
         return $this->belongsToMany(Destination::class,'user_destinations')->withTimestamps();
     }
+
+    public function followers()
+    {
+        return $this->belongsToMany(User::class, 'followers', 'following_id', 'user_id');
+    }
 }
+   
