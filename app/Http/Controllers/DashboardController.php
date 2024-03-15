@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 use App\Models\Schedule;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Redirect;
 use App\Http\Requests;
@@ -53,7 +52,6 @@ class DashboardController extends Controller
         $request->image->move(public_path('uploadedpost'),$image);
         $path="/uploadedpost/".$image;
         $post->image=$path;
-
         $post->save();
         return redirect()->route('dashboard')->with('success','Post Created');
     }
@@ -99,21 +97,18 @@ class DashboardController extends Controller
 
     // }
 
-    public function userprofileshow($id){
-        DB::enableQueryLog();
-
-        $user= User::with('posts','schedules')->find($id);
-        if(!$user){
-            return redirect()->route('dashboard')->with('error','User not found');
-        }
-
-        $posts = $user->posts ??[];
-
-        $schedules = $user->schedules??[];
-        // $user = User::findOrFail($id);
-        // $isFollowing = auth()->user()->isFollowing($user);
-        dd(DB::getQueryLog());
+    public function userprofileshow($id) {
+        $user = User::find($id);
         
+        if(!$user) {
+            return redirect()->route('dashboard')->with('error', 'User not found');
+        }
+    
+        // Retrieve posts and schedules only if $user is not null
+        $posts = $user->posts()->get(); // Retrieve posts related to the user
+        $schedules = $user->schedules()->get(); // Retrieve schedules related to the user
+        
+    
         return view('userprofileshow', [
             'user' => $user,
             'posts' => $posts,
@@ -122,6 +117,7 @@ class DashboardController extends Controller
         ]
         );
     }
+    
 
     // public function userprofileshow(Request $request){
     //     $userId = $request->get('id'); // Get the 'id' parameter from the request
@@ -155,7 +151,6 @@ class DashboardController extends Controller
         $destination->user_id=$userid;
         $destination->user_name=$username;
         $destination->save();
-
         $user->User::getDestinations()->attach($destination->id);
         return redirect()->route('dashboard')->with('success',"Successfully added");
     }
@@ -163,3 +158,15 @@ class DashboardController extends Controller
 
 
 
+ // $p_id = $user->id;
+
+        // // Get posts related to the user
+        // $posts = Post::where('user_id', $p_id)->get();
+
+        // // Get schedules related to the user
+        // $schedules = Schedule::where('user_id', $p_id)->get();
+        // $posts = $user->posts;
+        // $schedules = $user->schedules;
+        // // $p_id=$user->pluck('id');
+        // // $posts=Post::select('id')->where('id','=',$p_id)->get();
+        // // $schedules=Schedule::select('id')->where('id','=',$p_id)->get();

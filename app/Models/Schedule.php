@@ -9,7 +9,6 @@ use Illuminate\Database\Eloquent\Model;
 class Schedule extends Model
 {
     use HasFactory;
-    protected $foreignKey='user_id';
     protected $fillable = [
        
         'location',

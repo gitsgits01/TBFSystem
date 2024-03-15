@@ -7,7 +7,14 @@ Use App\Models\Schedule;
 use Illuminate\Http\Request;
 use App\Recommender\RecommenderSystem;
 use Illuminate\Support\Facades\Auth;
-use App\Models\Destination;
+// use App\Models\Destination;
+// use App\Models\Schedule;
+use Phpml\Classfication\KNearestNeighbors;
+use Phpml\Math\Distance\Euclidean;
+use Phpml\Math\Distance\Minkowski;
+use Phpml\Math\Matrix;
+use Carbon\Carbon;
+
 
 class RecommendationController extends Controller
 {
@@ -77,7 +84,21 @@ class RecommendationController extends Controller
 // {
 //     $user = User::find($userId);
 //     $destination = Destination::find($destinationId);
+// public function attachDestinationToUser($userId, $destinationId)
+// {
+//     $user = User::find($userId);
+//     $destination = Destination::find($destinationId);
 
+//     if ($user && $destination && !$user->destinations->contains($destinationId)) {
+//         $user->destinations()->attach($destinationId);
+//         return redirect()->route('dashboard')->with('success', 'Destination attached successfully!');
+//     }else{
+//         return redirect()->route('dashboard')->with('error','error');
+//     }
+// }
+// public function showSuggestedUsers($id)
+// {
+//     $user = User::find($id);
 //     if ($user && $destination && !$user->destinations->contains($destinationId)) {
 //         $user->destinations()->attach($destinationId);
 //         return redirect()->route('dashboard')->with('success', 'Destination attached successfully!');
@@ -92,12 +113,66 @@ class RecommendationController extends Controller
 //     if (!$user) {
 //         return response()->json(['error' => 'User not found'], 404);
 //     }
+//     if (!$user) {
+//         return response()->json(['error' => 'User not found'], 404);
+//     }
 
+//     $recommender = new RecommenderSystem();
+//     $suggestedUsers = $recommender->suggestUserFor($user);
 //     $recommender = new RecommenderSystem();
 //     $suggestedUsers = $recommender->suggestUserFor($user);
 
 //     return view('notification', compact('suggestedUsers'));
 // }
+//     return view('notification', compact('suggestedUsers'));
+// }
 
- }
+public function recommendSimilarTravels($userId, $location, $destination, $date, $days, $k = 3)
+{
+    // Get the user's scheduled travel details
+    $userSchedule = Schedule::where('user_id', $userId)->first();
+
+    // Prepare data for KNN
+    $trainingData = [];
+    $schedules = Schedule::where('destination', $destination)->get();
+
+    foreach ($schedules as $schedule) {
+        $trainingData[] = [
+            strtotime($schedule->date),
+            $schedule->location_latitude, // Assuming you have latitude and longitude columns
+            $schedule->location_longitude,
+        ];
+    }
+
+    // Convert input date to timestamp
+    $inputTimestamp = strtotime($date);
+
+    // Prepare input data for prediction
+    $inputData = [
+        $inputTimestamp,
+        $userSchedule->location_latitude,
+        $userSchedule->location_longitude,
+    ];
+
+    // Initialize KNN
+    $knn = new KNearestNeighbors($k);
+    $knn->train($trainingData);
+
+    // Find the nearest schedules using KNN
+    $nearestSchedules = $knn->predict([$inputData]);
+
+    // Get recommended user_ids
+    $recommendedUserIds = Schedule::whereIn('date', $nearestSchedules[0])->pluck('user_id');
+
+    // Exclude the current user from recommendations
+    $recommendedUserIds = $recommendedUserIds->reject(function ($id) use ($userId) {
+        return $id == $userId;
+    });
+
+    // Return the recommended user_ids
+    return response()->json(['recommended_user_ids' => $recommendedUserIds->toArray()]);
+}
+}
+
+
 

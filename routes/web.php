@@ -13,7 +13,7 @@ use app\Http\Controllers\Auth;
 use App\Http\Controllers\PusherController;
 use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\RecommendationController;
-use App\Http\Controllers\FollowerController;
+use App\Http\Controllers\TravelController;
 use  App\Http\Middleware;
 use App\Models\Feeditem;
 use Illuminate\Http\Request;
@@ -72,12 +72,7 @@ Route::group(['middleware'=>'auth'],function(){
 
     //Route::post('/destination',[DashboardController::class,'addDestination'])->name('destination');
 
-    Route::get('/suggested-users',[RecommendationController::class,'recommendUsers'])->name('notification');
-
-    // Route::post('/follow-unfollow-user',[Followercontroller::class ,'store'])->name('store');
-    // Route::get('/followers', [FollowerController::class, 'show'])->name('followers.show');
-    // Route::get('/followings', [FollowerController::class, 'showFollowings'])->name('showFollowings');
-
+    Route::get('/suggested-users',[TravelController::class,'recommendUser'])->name('notification');
 });
 
 
