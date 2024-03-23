@@ -21,11 +21,6 @@
       
       <div class="user-details">
           @if($user)
-          <p>{{$user->name}}  <button class="follow">
-            <span class="msg-follow">Follow</span>
-            <span class="msg-following">Following</span>
-            <span class="msg-unfollow">Unfollow</span>
-          </button></p> 
           <p>{{$user->email}}</p>
           <p><a href="{{url('chatify/'.$user->id)}}"><i class="fa-solid fa-message"></i>Message</a></p>
           <p><a href="{{route('dashboard')}}">Dashboard</a></p>
@@ -44,7 +39,7 @@
         <div class="post-img"><img src="{{asset($post['image'])}}"></div>
       </div>
       @endforeach
-      @endif
+    
       @if(!empty($schedules))
       @foreach($schedules as $schedule)
       @php

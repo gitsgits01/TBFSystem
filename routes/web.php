@@ -72,7 +72,7 @@ Route::group(['middleware'=>'auth'],function(){
 
     //Route::post('/destination',[DashboardController::class,'addDestination'])->name('destination');
 
-    Route::get('/suggested-users',[TravelController::class,'recommendUser'])->name('notification');
+    Route::get('/recommend-user',[TravelController::class,'recommendUser'])->name('notification');
 });
 
 
