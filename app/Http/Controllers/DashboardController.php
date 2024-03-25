@@ -154,6 +154,9 @@ class DashboardController extends Controller
         $user->User::getDestinations()->attach($destination->id);
         return redirect()->route('dashboard')->with('success',"Successfully added");
     }
+    public function hotels() {
+        return view('hotel');
+    }
 }
 
 

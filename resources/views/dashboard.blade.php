@@ -37,6 +37,7 @@
               </div>
             </div>           
             <div class="items"><a href="{{route('notification',Auth::user()->id)}}"><i class="fa-solid fa-bell"></i>Notification</a></div>
+            <div class="items"><a href="{{route('hotel')}}"><i class="fa-solid fa-hotel"></i>Bookings</a></div>
 
            
 

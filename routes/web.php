@@ -53,6 +53,7 @@ Route::group(['middleware'=>'auth'],function(){
     Route::get('/schedule', [ScheduleController::class,'schedule'])->name('schedule');
     Route::get('/schedule/create',[ScheduleController::class,'create'])->name('schedule.create');
     Route::post('/schedule',[ScheduleController::class,'store'])->name('schedule.store');
+    Route::get('/book-hotels',[DashboardController::class,'hotels'])->name('hotel');
     // Route::get('/Schedules',[ScheduleController::class,'s'])->name('show');
 
     Route::get('/dashboard',DashboardController::class.'@__invoke')->name('dashboard');
