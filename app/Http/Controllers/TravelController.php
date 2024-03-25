@@ -17,7 +17,7 @@ class TravelController extends Controller
         $destination=$latest_schedule->destination;
         $destination_date=$latest_schedule->date;
 
-        $schedule = Schedule::where('destination','=',$destination)->orderBy('created_at', 'desc')->get();
+        $schedule = Schedule::where('destination','=',$destination)->where('user_id','!=',$userid)->orderBy('created_at', 'desc')->get();
         // $date_range = [
         //     Carbon::parse($destination_date)->subDays(7), // Example: 7 days before the destination date
         //     Carbon::parse($destination_date)->addDays(7)   // Example: 7 days after the destination date

@@ -68,7 +68,7 @@ Route::group(['middleware'=>'auth'],function(){
    Route::get('/confirm-deletion',[UserController::class,'confirm_deletion'])->name('confirm_deletion');
    Route::post('/account/delete',[UserController::class,'delete'])->name('delete.account');
 
-   Route::get('/search',[DashboardController::class,'search'])->name('search');
+   Route::get('/search',[DashboardController::class,'search'])->name('searchuser');
     Route::get('/profile/{id}',[DashboardController::class,'userprofileshow'])->name('profile');
 
     //Route::post('/destination',[DashboardController::class,'addDestination'])->name('destination');
@@ -80,20 +80,12 @@ Route::group(['middleware'=>'auth'],function(){
 Route::middleware(['auth'])->group(function () {
     
     Route::post('/send-message',[ChatController::class, 'sendMessage']);
-    Route::get('/dashboard',DashboardController::class.'@__invoke')->name('dashboard');
+    //Route::get('/dashboard',DashboardController::class.'@__invoke')->name('dashboard');
     Route::get('/dashboard',[DashboardController::class,'showTimeline'])->name('dashboard');
 
     Route::get('/scheduledelete/{id}',[ScheduleController::class,'scheduleDelete'])->name('scheduledelete');
     Route::get('/postdelete/{id}',[ScheduleController::class,'postDelete'])->name('postdelete');
 
-    // Route::get('/scheduledelete',[ScheduleController::class,'scheduleDelete'])->name('scheduledelete');
-    // Route::get('/postdelete',[ScheduleController::class,'postDelete'])->name('postdelete');
-
-    //Route::get('/chatify',PusherController::class.'broadcast')->name('chatify');
-
-    // Route::get('/message', [MessageController::class, 'index'])->name('message.index');
-    // Route::get('/message/{userId}', [MessageController::class, 'show'])->name('message.show');
-    // Route::post('/message', [MessageController::class, 'store'])->name('message.store');
     
 
 });

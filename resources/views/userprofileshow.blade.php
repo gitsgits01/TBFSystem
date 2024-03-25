@@ -21,14 +21,17 @@
       
       <div class="user-details">
           @if($user)
+          <p>{{$user->name}}</p>
+
           <p>{{$user->email}}</p>
           <p><a href="{{url('chatify/'.$user->id)}}"><i class="fa-solid fa-message"></i>Message</a></p>
           <p><a href="{{route('dashboard')}}">Dashboard</a></p>
           @endif
       </div>
     </div>
-    {{-- <div class="tdata">
-      @if(!empty($posts))
+
+    <div class="tdata">
+      {{-- @if(!empty($posts)) --}}
       {{-- @php
       dd($posts);
       @endphp --}}
@@ -39,26 +42,28 @@
         <div class="post-img"><img src="{{asset($post['image'])}}"></div>
       </div>
       @endforeach
-    
-      @if(!empty($schedules))
-      @foreach($schedules as $schedule)
+      {{-- @endif --}}
+        {{-- </div> --}}
+      {{-- <br> --}}
+      {{-- <div class="tdata"> --}}
       @php
       dd($schedules);
       @endphp
+
+      @foreach($schedules as $schedule)
+      
       <div class="timeline">
         <p class="username">{{$schedule['user_name']}}&nbsp;Scheduled a travel.</p>
         <p class="location">Location:{{$schedule['location']}}</p>
         <p class="destination">Destination:{{$schedule['destination']}}</p>
         <p class="date">Date:{{$schedule['date']}}</p>
         <p class="days">Number of Days:{{$schedule['days']}}</p>
-
       </div>
       @endforeach
-      @endif
-    </div> --}}
+    </div>
    
     
-        <script src="{{asset('js/dashboard.js')}}"></script>
+    <script src="{{asset('js/dashboard.js')}}"></script>
 
     
   </body>

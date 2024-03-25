@@ -12,7 +12,7 @@
         @if(isset($schedule))
             <ul>
                 @foreach($schedule as $suggestedUser)
-                    {{ $suggestedUser->user_name}} can be your travel buddy<br/>
+                   <b> {{ $suggestedUser->user_name}}</b> can be your travel buddy to <b>{{$suggestedUser->destination}}</b><br/>
                     <!-- Display other suggested user details as needed -->
                 @endforeach
             </ul>
