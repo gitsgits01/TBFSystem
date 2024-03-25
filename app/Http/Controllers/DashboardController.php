@@ -9,6 +9,7 @@ use App\Http\Requests;
 use App\Models\Destination;
 use App\Models\Post;
 use App\Models\User;
+use App\Models\Follower;
 use Symfony\Component\HttpKernel\Controller\ArgumentResolver\RequestPayloadValueResolver;
 
 class DashboardController extends Controller
@@ -101,7 +102,9 @@ class DashboardController extends Controller
             'user' => $user,
             'posts' => $posts,
             'schedules' => $schedules,
-        ]);
+            // 'isFollowing' => $isFollowing
+        ]
+        );
     }
     
 
@@ -139,6 +142,9 @@ class DashboardController extends Controller
         $destination->save();
         $user->User::getDestinations()->attach($destination->id);
         return redirect()->route('dashboard')->with('success',"Successfully added");
+    }
+    public function hotels() {
+        return view('hotel');
     }
 }
 
