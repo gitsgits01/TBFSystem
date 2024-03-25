@@ -76,7 +76,7 @@
         @endforeach
 
 
-        @foreach($posts as $post)
+        @foreach($post as $post)
         <div class="timeline">
         <p class="username"><a href="{{ route('profile' ,$post->user_id) }}">{{$post->user_name}}</a>&nbsp;created a post.&nbsp;&nbsp;&nbsp;</p>
         

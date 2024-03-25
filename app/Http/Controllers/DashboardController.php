@@ -84,17 +84,6 @@ class DashboardController extends Controller
         return view('search',compact('user','search'));
     }
 
-    // public function userprofileshow($id){
-    //     $userid=User::find($id); // Get the 'id' parameter from the request
-    //     $user=User::where('id','=',$userid)->get();
-    //      // Use find instead of where to get a single user by ID
-    //     //dd($user);
-    //     $posts = Post::where('user_id', '=', $userid)->get();
-    //     $schedules = Schedule::where('user_id', '=', $userid)->get();
-    
-    //     return view('userprofileshow', compact('user', 'posts', 'schedules'));
-
-    // }
 
     public function userprofileshow($id) {
         $user = User::find($id);
@@ -130,12 +119,12 @@ class DashboardController extends Controller
 
     public function showTimeline(Request $request){
         
-        $posts = Post::orderBy('created_at', 'desc')->get();
+        $post = Post::orderBy('created_at', 'desc')->get();
         $schedule = Schedule::orderBy('created_at', 'desc')->get();
 
         // $posts=Post::all();
         // $schedule=Schedule::all();
-        return view('dashboard',compact('posts','schedule'));
+        return view('dashboard',compact('post','schedule'));
     }
 
     public function addDestination(Request $request){
