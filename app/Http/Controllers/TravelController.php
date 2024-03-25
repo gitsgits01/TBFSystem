@@ -15,17 +15,20 @@ class TravelController extends Controller
 
         $latest_schedule=Schedule::where('user_id','=',$userid)->orderBy('created_at', 'desc')->first();
         $destination=$latest_schedule->destination;
-        $destination_date=$latest_schedule->date;
+        //$destination_date=$latest_schedule->date;
 
-        $schedule = Schedule::where('destination','=',$destination)->where('user_id','!=',$userid)->orderBy('created_at', 'desc')->get();
-        // $date_range = [
-        //     Carbon::parse($destination_date)->subDays(7), // Example: 7 days before the destination date
-        //     Carbon::parse($destination_date)->addDays(7)   // Example: 7 days after the destination date
-        // ];
+        $today=date("d/m/y");
+
+        $schedule = Schedule::where('destination','=',$destination)
+        ->where('user_id','!=',$userid)
+        ->where('date','<',$today)
+        ->orderBy('created_at', 'desc')->get();
+    
         if($schedule->isEmpty()){
 
             return view('notification') -> with('Error', 'No schedules found with same destination.');
         }
+        
 
         return view('notification', compact('schedule'));
 
